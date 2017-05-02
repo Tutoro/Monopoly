@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Monopoly"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <Grid x:Name="Griglia_Principale">
         
     </Grid>
 </Window>

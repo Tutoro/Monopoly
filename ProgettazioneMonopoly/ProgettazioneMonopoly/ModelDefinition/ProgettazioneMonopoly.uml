@@ -170,7 +170,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f7732fc3-e31e-413f-be29-f17be5eea8b2"
+                  Id="84d08a89-ade6-4808-bb72-8ede47856344"
                   name="C"
                   direction="In"
                   isUnique="false">
@@ -178,6 +178,19 @@
                     <classMoniker
                       Id="6e1622b3-2a69-453f-b79d-02b834a41b6d"
                       LastKnownName="Casella"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f2315e1c-182c-4ecb-8ea7-e63e444b1d3c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="2d8e68c5-5f3f-4c01-a186-660823e24547"
+                      LastKnownName="bool"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -272,6 +285,60 @@
               LastKnownLocation="ProgettazioneMonopoly.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="63c357ef-6478-4477-9be9-076e2be49fe5"
+            isDerived="false"
+            sourceEndRoleName="Casella"
+            targetEndRoleName="Giocatore"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2d1a3991-430e-4992-ab9e-97ad36053efd"
+              LastKnownName="Giocatore"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="098d2ee3-d5d5-42e7-ae7c-df0a7fbec68f"
+                  name="Casella"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ad89d41d-840a-46cc-baab-62fd5d2393b0"
+                  name="Giocatore"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="75a6a72d-8b99-4385-a88b-a002417d500d"
+                      name="Lower"
+                      value="28" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="1a2dc1ec-7c43-4978-8c47-0eb94211adf6"
+                      name="Upper"
+                      value="28" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="d25b31ed-de92-42ce-8f35-10d15f608a6d"
@@ -436,6 +503,60 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="edfe99f5-a14b-49e0-9035-11324c589600"
+            isDerived="false"
+            sourceEndRoleName="Proprieta"
+            targetEndRoleName="Struttura"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="daf86d97-c4e2-45aa-a6ae-27b421f70886"
+              LastKnownName="Struttura"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="538288b6-39f1-4dbe-8e59-a1145bfe8df8"
+                  name="Proprieta"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="5642bddd-bd87-4d2d-a3df-a564177db1ef"
+                      name="Lower"
+                      value="4" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d6ee2fdf-411f-43c6-a00a-62f44bfbf103"
+                      name="Upper"
+                      value="4" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ab0b9798-6fb3-4a0d-a90e-a640b316e6de"
+                  name="Struttura"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="afe10198-121d-420c-9c28-9187c264b24a"
@@ -504,7 +625,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="4096e4ec-c4fe-49b3-b8ac-3eef0deb4991"
+                  Id="18c94263-1d12-4d7b-bc6a-18eb40efcb9c"
                   name="Costo"
                   direction="In"
                   isUnique="false">
@@ -512,6 +633,20 @@
                     <undefinedTypeMoniker
                       Id="1fc7972b-bdd4-44aa-a43d-caf16dd84871"
                       LastKnownName="int"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f6167ed7-c91c-4885-bc52-aa73b4b8d72a"
+                  name="Colore"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
+                      LastKnownName="brush"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -578,7 +713,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="074ddc5e-f447-4791-9151-d8023a05b56e"
+                  Id="db08a123-a83c-4df1-864d-f370da08cd39"
                   name="Costo"
                   direction="In"
                   isUnique="false">
@@ -586,6 +721,20 @@
                     <undefinedTypeMoniker
                       Id="1fc7972b-bdd4-44aa-a43d-caf16dd84871"
                       LastKnownName="int"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c5b61740-6d48-4a75-9b46-fe5a557fd0f5"
+                  name="Colore"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
+                      LastKnownName="brush"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -652,7 +801,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b1029f5f-dd8f-4574-ba95-8017e868d705"
+                  Id="bd97df02-740b-47b5-bd99-eb59732cf801"
                   name="Tipo"
                   direction="In"
                   isUnique="false">
@@ -660,6 +809,20 @@
                     <enumerationMoniker
                       Id="795e8c3b-4b0c-4866-affa-5ba8367a239e"
                       LastKnownName="Tipo_Speciali"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c72ead6d-93fa-4dcc-bc9f-a4152151096e"
+                  name="Colore"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
+                      LastKnownName="brush"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -675,6 +838,47 @@
         name="Tipo_Speciali"
         isAbstract="false"
         isLeaf="false">
+        <targetEnds>
+          <association
+            Id="2765d850-c091-49e5-971d-26641eb31b8e"
+            isDerived="false"
+            sourceEndRoleName="Tipo_Speciali"
+            targetEndRoleName="Speciali"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="2830b67b-c62c-4f37-9fb0-b8794b74bc01"
+              LastKnownName="Speciali"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1ea50244-892e-4d65-ad93-921d8fccb7b6"
+                  name="Tipo_Speciali"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c6ef5419-d722-4edb-83bf-f071c5a656bc"
+                  name="Speciali"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedLiterals>
           <enumerationLiteral
             Id="57129b1d-ac3e-4d5e-a6eb-359f7237abd8"

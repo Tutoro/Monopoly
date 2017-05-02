@@ -85,10 +85,18 @@
             <elementDefinition Id="10d8e044-5d98-4d99-90a7-cc3bc5e39d9a" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="137c9b6f-94ec-4285-a9d9-73427563628b" name="C" direction="In" isUnique="false">
-                  <elementDefinition Id="f7732fc3-e31e-413f-be29-f17be5eea8b2" />
+                <parameter Id="4c99a7a1-31fe-490a-8261-b13d3424211f" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="84d08a89-ade6-4808-bb72-8ede47856344" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="45d04658-9e21-480b-a82e-aab8d91b90d9" LastKnownName="Casella" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c15d0405-5c86-43e1-9106-bafb18e47f8e" direction="Return" isUnique="false">
+                  <elementDefinition Id="f2315e1c-182c-4ecb-8ea7-e63e444b1d3c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -143,6 +151,34 @@
             <elementDefinition Id="541f8273-99c8-4875-8ef2-be513b73b40c" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="b4b9ccbc-8ab2-472f-a35d-ef08bf263882" isDerived="false" sourceEndRoleName="Casella" targetEndRoleName="Giocatore" isLeaf="false" isAbstract="false">
+            <classMoniker Id="157ea774-f93f-4a30-a817-7bdd2bfbe518" LastKnownName="Giocatore" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="913c8403-0af1-442d-9af2-01f05ed72dd2" name="Casella" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="098d2ee3-d5d5-42e7-ae7c-df0a7fbec68f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="949d9d6e-9c97-478b-aafd-a08487a57f70" name="Giocatore" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="be366aa3-f94f-40f4-baf4-da647969b1a6" name="Lower" value="28">
+                      <elementDefinition Id="75a6a72d-8b99-4385-a88b-a002417d500d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="8baa9ce4-168f-4412-a4cd-30a385b7fdb5" name="Upper" value="28">
+                      <elementDefinition Id="1a2dc1ec-7c43-4978-8c47-0eb94211adf6" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="ad89d41d-840a-46cc-baab-62fd5d2393b0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="63c357ef-6478-4477-9be9-076e2be49fe5" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property Id="4068ce4a-8ceb-47b5-a09b-7fe48141632e" name="Colore" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="d25b31ed-de92-42ce-8f35-10d15f608a6d" />
@@ -244,6 +280,34 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="cd944f1d-1427-4138-87bf-6321a77832df" name="Proprieta" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="816e024a-0f48-4908-91ff-a5fca8e4c849" />
+        <targetEnds>
+          <association Id="fe437332-fb13-4ffd-8759-d495534556d5" isDerived="false" sourceEndRoleName="Proprieta" targetEndRoleName="Struttura" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ab8540eb-93d9-48aa-8a68-63656a5762da" LastKnownName="Struttura" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a50a3e31-5f84-46cf-a6ac-849e915b494c" name="Proprieta" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="8911d2ec-aa75-4ffe-b8a5-c82b86b5f1fb" name="Lower" value="4">
+                      <elementDefinition Id="5642bddd-bd87-4d2d-a3df-a564177db1ef" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="59622e64-bc63-4de7-aa02-364c1a378a20" name="Upper" value="4">
+                      <elementDefinition Id="d6ee2fdf-411f-43c6-a00a-62f44bfbf103" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="538288b6-39f1-4dbe-8e59-a1145bfe8df8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="22894e5b-b3bf-4ddc-9f4f-093485d58034" name="Struttura" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ab0b9798-6fb3-4a0d-a90e-a640b316e6de" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="edfe99f5-a14b-49e0-9035-11324c589600" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property Id="b4a0b8ed-aa86-4396-ab23-45c333f4b580" name="Costo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="afe10198-121d-420c-9c28-9187c264b24a" />
@@ -269,10 +333,18 @@
             <elementDefinition Id="8e1bbc1c-f92a-43ea-82e7-d5f3731f34e3" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="ba28ddc3-ac49-4948-a016-fce8d99e530f" name="Costo" direction="In" isUnique="false">
-                  <elementDefinition Id="4096e4ec-c4fe-49b3-b8ac-3eef0deb4991" />
+                <parameter Id="5d583542-4f9d-464b-a836-ef023752d092" name="Costo" direction="In" isUnique="false">
+                  <elementDefinition Id="18c94263-1d12-4d7b-bc6a-18eb40efcb9c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="80d05acc-d9f4-4e0f-9637-0ee7f182d2d0" name="Colore" direction="In" isUnique="false">
+                  <elementDefinition Id="f6167ed7-c91c-4885-bc52-aa73b4b8d72a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -303,10 +375,18 @@
             <elementDefinition Id="8357166d-a91e-4063-aa0c-ad36bdfc05ed" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="5a60c44a-8892-48fb-b635-a8efb6a108f1" name="Costo" direction="In" isUnique="false">
-                  <elementDefinition Id="074ddc5e-f447-4791-9151-d8023a05b56e" />
+                <parameter Id="fc6f908e-56b8-4f48-8f2f-6f945951c253" name="Costo" direction="In" isUnique="false">
+                  <elementDefinition Id="db08a123-a83c-4df1-864d-f370da08cd39" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="92461d04-9532-48be-b56f-83bf2e3ce603" name="Colore" direction="In" isUnique="false">
+                  <elementDefinition Id="c5b61740-6d48-4a75-9b46-fe5a557fd0f5" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -337,10 +417,18 @@
             <elementDefinition Id="34c49646-77a9-4266-a217-f8dea7cb53cc" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="98fe042b-8b96-49d1-938b-2a1c5c4e278c" name="Tipo" direction="In" isUnique="false">
-                  <elementDefinition Id="b1029f5f-dd8f-4574-ba95-8017e868d705" />
+                <parameter Id="f9fc42bb-8eef-45b6-a8fd-fe9cab3eecee" name="Tipo" direction="In" isUnique="false">
+                  <elementDefinition Id="bd97df02-740b-47b5-bd99-eb59732cf801" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="34cfb1ff-bd7f-4bb2-9ffb-5056c392e0b3" LastKnownName="Tipo_Speciali" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2bac19d2-4849-4615-95b2-624aba8007e9" name="Colore" direction="In" isUnique="false">
+                  <elementDefinition Id="c72ead6d-93fa-4dcc-bc9f-a4152151096e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -377,6 +465,24 @@
     <logicalClassDesignerModelHasTypes>
       <enumeration Id="78a4741c-c3ea-40ee-b170-22e8a7bf6f7c" name="Tipo_Speciali" isAbstract="false" isLeaf="false">
         <elementDefinition Id="795e8c3b-4b0c-4866-affa-5ba8367a239e" />
+        <targetEnds>
+          <association Id="f8c140e9-184e-4d00-912f-4c7fcdcc63af" isDerived="false" sourceEndRoleName="Tipo_Speciali" targetEndRoleName="Speciali" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ec6d2526-e54b-43f3-a9cc-930e3c8177f1" LastKnownName="Speciali" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ff38e4c7-2f39-4c72-b009-8d656be89a6f" name="Tipo_Speciali" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1ea50244-892e-4d65-ad93-921d8fccb7b6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f6e6826f-6789-4490-829a-2c300e42abb7" name="Speciali" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c6ef5419-d722-4edb-83bf-f071c5a656bc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2765d850-c091-49e5-971d-26641eb31b8e" />
+          </association>
+        </targetEnds>
         <ownedLiterals>
           <enumerationLiteral Id="2d9f803f-ca09-4e11-9afd-48d2e653be28" name="Tassa">
             <elementDefinition Id="57129b1d-ac3e-4d5e-a6eb-359f7237abd8" />

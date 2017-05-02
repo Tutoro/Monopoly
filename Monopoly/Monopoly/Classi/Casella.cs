@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace Monopoly.Classi
 {
-    class Casella : Image
+    public abstract class Casella : Image
     {
         public Brush Colore;
         public string Nome;

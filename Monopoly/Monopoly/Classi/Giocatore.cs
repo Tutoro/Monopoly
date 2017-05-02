@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 /*!
 \author    Arduini Alberto
-\version   0.1
+\version   0.1b
 \date      02/05/2017
 */
 
@@ -41,10 +41,15 @@ namespace Monopoly.Classi
 
         //! \fn Compra \brief Compra una proprietà prestabilita
         //! \param C \brief Casella da comprare
-        //! \return bool \brief Ritorna falso se il giocatore non ha abbastanza soldi per acquistare, altrimenti vero
+        //! \return bool \brief Ritorna falso se il giocatore non ha abbastanza soldi per acquistare o se non è una proprieta valida, altrimenti vero
         public bool Compra(Casella C)
         {
-            if (C.Costo > Soldi)
+            if (C is Speciali)
+                return false;
+
+            Proprieta t = (Proprieta)C;
+
+            if (t.Costo > Soldi)
                 return false;
             Proprieta.Add(C);
             return true;
@@ -55,27 +60,35 @@ namespace Monopoly.Classi
         //! \return bool \brief Ritorna falso se il giocatore non possiede la proprietà, altrimenti vero
         public bool Vendi(Casella C)
         {
-            if (!Proprieta.Contains(C))
+            if (C is Speciali || !Proprieta.Contains(C))
                 return false;
+
             Proprieta.Remove(C);
-            Soldi += C.Costo / 2;
-            C.Ipotecato = true;
+
+            Proprieta t = (Proprieta)C;
+            Soldi += t.Costo / 2;
+            t.Ipotecato = true;
             return true;
         }
 
         //! \fn Vendi \brief Vende una struttura su una proprietà prestabilita
         //! \param S \brief Struttura da vendere
         //! \param C \brief Casella sulla cui agire
-        //! \return bool \brief Ritorna falso se il giocatore non possiede la proprietà o non ha il tipo di struttura da vendere, altrimenti vero
+        //! \return bool \brief Ritorna falso se il giocatore non possiede la proprietà, non ha il tipo di struttura da vendere o è una proprieta non edificabile, altrimenti vero
         public bool Vendi(Struttura S, Casella C)
         {
             if (!Proprieta.Contains(C))
                 return false;
-            for(int i = 0; i < C.Strutture.Count; i++)
+
+            Proprieta t = (Proprieta)C;
+            if (t./*Edificabile*/==/*false*/)
+                return false;
+
+            for(int i = 0; i < t.s.Count; i++)
             {
-                if(C.Strutture[i].Tipo == S.Tipo)
+                if(t.s[i].Tipo == S.Tipo)
                 {
-                    C.Strutture.RemoveAt(i);
+                    t.s.RemoveAt(i);
                     return true;
                 }
             }

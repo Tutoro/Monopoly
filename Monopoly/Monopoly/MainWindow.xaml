@@ -1,0 +1,18 @@
+﻿<Window x:Class="Monopoly.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Monopoly"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid x:Name="Griglia_Principale">
+        <Image x:Name="Image_Campo" HorizontalAlignment="Left" Height="500" Margin="10,10,0,0" VerticalAlignment="Top" Width="500"/>
+        <Button x:Name="Button_Compra" Content="Compra / Ipoteca" HorizontalAlignment="Left" Margin="10,515,0,0" VerticalAlignment="Top" Width="160" Height="44"/>
+        <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="175,515,0,0" VerticalAlignment="Top" Width="170" Height="44"/>
+        <Button x:Name="Button_Passa" Content="Passa" HorizontalAlignment="Left" Margin="350,515,0,0" VerticalAlignment="Top" Width="160" Height="44"/>
+        <TextBox x:Name="TextBox_SoldiUtenti" HorizontalAlignment="Left" Height="100" Margin="515,459,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
+        <StackPanel x:Name="StackPanel_ProprietaUtente" HorizontalAlignment="Left" Height="444" Margin="515,10,0,0" VerticalAlignment="Top" Width="267"/>
+
+    </Grid>
+</Window>

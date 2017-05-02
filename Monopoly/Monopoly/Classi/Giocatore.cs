@@ -23,7 +23,7 @@ namespace Monopoly.Classi
 {
     //! \class Giocatore
     //! \brief Classe che rappresenta il giocatore nel programma
-    class Giocatore
+    public class Giocatore
     {
         public Brush Colore; //! \var Colore \brief Colore che rappresenta il giocatore sul campo
         public List<Casella> Proprieta; //! \var Proprieta \brief Lista di Caselle che contiene le Proprietà (normali e speciali) che il giocatore possiede

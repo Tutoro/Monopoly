@@ -18,9 +18,11 @@ namespace Monopoly.Classi
     class Casella : Image
     {
         public Brush Colore;
-        public Casella(Brush Col)
+        public string Nome;
+        public Casella(Brush Col, string N)
         {
             Colore = Col;
+            Nome = N;
         }
     }
 }

@@ -24,13 +24,13 @@ namespace Monopoly.Classi
         public int Costo;
         public bool Ipotecato;
         public List<Struttura> s = new List<Struttura>();
-        public Proprieta(int C, Brush Col) : base(Col)
+        public Proprieta(string N, int C, Brush Col) : base(Col, N)
         {
             Costo = C;
         }
     }
 
-    class Speciali
+    class Speciali : Casella
     {
 
     }
@@ -39,7 +39,7 @@ namespace Monopoly.Classi
     {
         public int Costo;
         public bool Ipotecato;
-        public Proprieta_Speciali(int C, Brush Col) : base(Col)
+        public Proprieta_Speciali(string N, int C, Brush Col) : base(Col, N)
         {
             Costo = C;
         }

@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="d8cd1c84-50c5-4185-8c7d-3b537a69484d" name="UMLClassDiagram1" linkedPackageId="fc47be20-4c7d-4fd4-be1e-79495444212d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="157ea774-f93f-4a30-a817-7bdd2bfbe518" name="Giocatore" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2d1a3991-430e-4992-ab9e-97ad36053efd" />
+        <ownedAttributesInternal>
+          <property Id="abf05460-5472-4ec9-8ad9-bd2e307ca6f4" name="Soldi" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c2e30164-932d-4c69-9430-79e814ed1299" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="59adfe36-4a5d-4739-a8fb-95cd83785bd4" name="Colore" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5ea042d1-62ba-45e0-b1ee-41ecbfdafec5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
+            </type_NamedElement>
+          </property>
+          <property Id="a2b3f93b-94c0-4b0b-be41-896d7be5f3b5" name="Proprietà" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1e28f1fc-fa98-42cb-9d43-c76b2ec5f03b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="60a65966-8c56-4b65-8888-98cf4c6777f1" LastKnownName="List&lt;Casella&gt;" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="c328a1d0-536c-405d-9a1b-9369b86e1abd" name="Giocatore" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="167a54ff-a921-4548-a827-5639f3c35086" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="df4a2b0c-1fa9-40ca-9707-0a5ba2c1bace" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="dd60c0f7-08fd-4c56-8c61-6b3f3dc2e7f8" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5f8dc5de-22d0-43b1-8377-d83243f362f3" name="S" direction="In" isUnique="false">
+                  <elementDefinition Id="a1079041-655a-4231-92ed-5af3feb33e55" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="43db6608-72fa-4c5d-9855-3609258f48cc" name="Compra" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bc5025e7-6c7f-4f7f-baf0-680faa53b492" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="91f50664-b61e-42bd-922e-8f5b4b7e3a30" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="124e00ac-fe90-4137-9f06-a6c2b109e550" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="45d04658-9e21-480b-a82e-aab8d91b90d9" LastKnownName="Casella" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fa9af0ca-3ab4-4a16-9c16-2bc5ca566b3d" direction="Return" isUnique="false">
+                  <elementDefinition Id="ed1e8834-71a0-4f1a-99aa-f198c3aad262" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="ce1b86af-d6c9-4054-b01b-2d4a50aea9d7" name="Vendi" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="10d8e044-5d98-4d99-90a7-cc3bc5e39d9a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4c99a7a1-31fe-490a-8261-b13d3424211f" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="84d08a89-ade6-4808-bb72-8ede47856344" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="45d04658-9e21-480b-a82e-aab8d91b90d9" LastKnownName="Casella" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c15d0405-5c86-43e1-9106-bafb18e47f8e" direction="Return" isUnique="false">
+                  <elementDefinition Id="f2315e1c-182c-4ecb-8ea7-e63e444b1d3c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="8defe893-591f-45b9-ac61-25d51973fd4d" name="Vendi" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="92f3e9b0-7062-46d3-be88-9bd83dbc8c98" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="9cbb0244-6346-4a74-8a4e-697d6bd2afe9" name="S" direction="In" isUnique="false">
+                  <elementDefinition Id="2d1ff6e6-f145-4b56-81bd-cf7037f0e021" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="5c6b25a3-ca07-4f2b-9425-e53eb7382919" LastKnownName="Struttura" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f73f2bc4-0e48-482f-8146-30c5da5fecc0" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="52ad3de4-f195-422f-b43a-6db8357538ec" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="45d04658-9e21-480b-a82e-aab8d91b90d9" LastKnownName="Casella" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e1507d1e-d35f-48a0-9cc7-8e8b6fbcfa52" direction="Return" isUnique="false">
+                  <elementDefinition Id="843e1b93-31ab-4d90-90c4-be0d19a3f4f1" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="17958e45-9e36-4a16-83a4-1a7cf8ffa078" name="Casella" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6e1622b3-2a69-453f-b79d-02b834a41b6d" />
+        <generalsInternal>
+          <generalization Id="fa3e85ae-686b-4941-a3ec-530ce3f56c14" isSubstitutable="false">
+            <classMoniker Id="cd944f1d-1427-4138-87bf-6321a77832df" LastKnownName="Proprieta" />
+            <elementDefinition Id="6e03e702-6edb-49fd-a4f6-9de4862f2f20" />
+          </generalization>
+          <generalization Id="821af9a5-fbf7-4c49-8737-93fb223672b3" isSubstitutable="false">
+            <classMoniker Id="ec6d2526-e54b-43f3-a9cc-930e3c8177f1" LastKnownName="Speciali" />
+            <elementDefinition Id="6e17532f-51d3-4ac2-bf70-30077977f8a2" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="b4b9ccbc-8ab2-472f-a35d-ef08bf263882" isDerived="false" sourceEndRoleName="Casella" targetEndRoleName="Giocatore" isLeaf="false" isAbstract="false">
+            <classMoniker Id="157ea774-f93f-4a30-a817-7bdd2bfbe518" LastKnownName="Giocatore" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="913c8403-0af1-442d-9af2-01f05ed72dd2" name="Casella" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="098d2ee3-d5d5-42e7-ae7c-df0a7fbec68f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="949d9d6e-9c97-478b-aafd-a08487a57f70" name="Giocatore" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="be366aa3-f94f-40f4-baf4-da647969b1a6" name="Lower" value="28">
+                      <elementDefinition Id="75a6a72d-8b99-4385-a88b-a002417d500d" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="8baa9ce4-168f-4412-a4cd-30a385b7fdb5" name="Upper" value="28">
+                      <elementDefinition Id="1a2dc1ec-7c43-4978-8c47-0eb94211adf6" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="ad89d41d-840a-46cc-baab-62fd5d2393b0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="63c357ef-6478-4477-9be9-076e2be49fe5" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="4068ce4a-8ceb-47b5-a09b-7fe48141632e" name="Colore" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d25b31ed-de92-42ce-8f35-10d15f608a6d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
+            </type_NamedElement>
+          </property>
+          <property Id="fca5e271-42ef-4f50-8d7b-43f4c7210716" name="Nome" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="78a06583-2745-4a82-957e-86d3ba47b49b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="572596c8-fc25-4dbb-862d-a16c294f8331" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="d0545790-a44f-4b04-9bbf-d9eb849cc00a" name="Casella" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f3487a58-af5a-4d8b-9d30-411d3ef5b539" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1dd72ca7-16b0-4d16-92d9-2e8ffbede439" name="Col" direction="In" isUnique="false">
+                  <elementDefinition Id="dd64dddf-50f5-49d8-b81e-ccd4fa7ca0c1" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1e5909ee-ff64-41d3-95bb-9b26da8e49df" name="N" direction="In" isUnique="false">
+                  <elementDefinition Id="a1ae1f4d-c077-48f2-9113-f4c760dc8bc8" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="572596c8-fc25-4dbb-862d-a16c294f8331" LastKnownName="string" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ab8540eb-93d9-48aa-8a68-63656a5762da" name="Struttura" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="daf86d97-c4e2-45aa-a6ae-27b421f70886" />
+        <ownedAttributesInternal>
+          <property Id="2ed2a0ea-c6ca-48be-904e-39bbdabfb119" name="Tipo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="22ebadcb-0c6c-4747-a8e4-1f42ab0947d9" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="e7e6a3da-43a6-4863-b452-0b26cde2f7a6" name="Struttura" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d607e9f9-1f92-4601-9c06-d9e1bbdcdda6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="05a80832-6cd6-485e-a4ab-912e90b7735d" name="T" direction="In" isUnique="false">
+                  <elementDefinition Id="0ffd30e8-2ec9-4850-9afd-9220cac9561a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="17c492a4-3003-4181-b879-45716b09d8cf" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="1fc7972b-bdd4-44aa-a43d-caf16dd84871" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="eeca355b-f192-4290-b128-2aae21d64c00" name="brush" isAbstract="false" isLeaf="false" cachedFullName="brush">
+        <elementDefinition Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="60a65966-8c56-4b65-8888-98cf4c6777f1" name="List&lt;Casella&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Casella&gt;">
+        <elementDefinition Id="843e6a6a-8c3b-4104-9aa1-be21368943c1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="45d04658-9e21-480b-a82e-aab8d91b90d9" name="Casella" isAbstract="false" isLeaf="false" cachedFullName="ProgettazioneMonopoly::Casella">
+        <elementDefinition Id="6e1622b3-2a69-453f-b79d-02b834a41b6d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="14ca3da8-9ea1-4865-a835-969b125e1572" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="2d8e68c5-5f3f-4c01-a186-660823e24547" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5c6b25a3-ca07-4f2b-9425-e53eb7382919" name="Struttura" isAbstract="false" isLeaf="false" cachedFullName="ProgettazioneMonopoly::Struttura">
+        <elementDefinition Id="daf86d97-c4e2-45aa-a6ae-27b421f70886" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="634dc707-5179-46b0-9251-dbc072bcfb75" name="Image" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="567dcc9e-5865-4531-b4c8-0160783be933" />
+        <generalsInternal>
+          <generalization Id="0fb7629f-61ff-4aad-ac29-9dab39478a35" isSubstitutable="false">
+            <classMoniker Id="17958e45-9e36-4a16-83a4-1a7cf8ffa078" LastKnownName="Casella" />
+            <elementDefinition Id="7a8d6d92-dad2-4d5f-8277-2b8382d1e1d8" />
+          </generalization>
+          <generalization Id="8d713554-b442-413a-97f8-e2d536617b23" isSubstitutable="false">
+            <classMoniker Id="ab8540eb-93d9-48aa-8a68-63656a5762da" LastKnownName="Struttura" />
+            <elementDefinition Id="2d4f03aa-e037-4654-b76b-7763ea37065f" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cd944f1d-1427-4138-87bf-6321a77832df" name="Proprieta" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="816e024a-0f48-4908-91ff-a5fca8e4c849" />
+        <targetEnds>
+          <association Id="fe437332-fb13-4ffd-8759-d495534556d5" isDerived="false" sourceEndRoleName="Proprieta" targetEndRoleName="Struttura" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ab8540eb-93d9-48aa-8a68-63656a5762da" LastKnownName="Struttura" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a50a3e31-5f84-46cf-a6ac-849e915b494c" name="Proprieta" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="8911d2ec-aa75-4ffe-b8a5-c82b86b5f1fb" name="Lower" value="4">
+                      <elementDefinition Id="5642bddd-bd87-4d2d-a3df-a564177db1ef" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="59622e64-bc63-4de7-aa02-364c1a378a20" name="Upper" value="4">
+                      <elementDefinition Id="d6ee2fdf-411f-43c6-a00a-62f44bfbf103" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="538288b6-39f1-4dbe-8e59-a1145bfe8df8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="22894e5b-b3bf-4ddc-9f4f-093485d58034" name="Struttura" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ab0b9798-6fb3-4a0d-a90e-a640b316e6de" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="edfe99f5-a14b-49e0-9035-11324c589600" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="b4a0b8ed-aa86-4396-ab23-45c333f4b580" name="Costo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="afe10198-121d-420c-9c28-9187c264b24a" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6f7a36ba-3efd-4a2a-b08c-2caaa4440535" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="e93debe5-58c3-4a20-a561-e14a1c71618e" name="Ipotecato" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4838c568-a229-4c6c-9f83-8fc6c19a3deb" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="d5ae0302-9cef-47ea-970a-aabb59fb58e9" LastKnownName="bool" />
+            </type_NamedElement>
+          </property>
+          <property Id="73467312-4fa8-43b2-9799-c1ba2f7bb442" name="Strutture" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9036b578-ca8d-4554-8564-52c4654a8f0d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="80f103fa-d0ab-437a-beb1-715d09e25b37" LastKnownName="List&lt;Strutture&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="478b64c4-ddf8-4241-a651-e23fd69b3343" name="Speciale" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="810d1078-a9ba-497a-8cf9-fa3904417e4d" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="e73f4a05-e686-4413-b031-b96de26849c5" name="Proprieta" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8e1bbc1c-f92a-43ea-82e7-d5f3731f34e3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="950c4b20-6f4d-4948-9829-d899a4eaf20b" name="Col" direction="In" isUnique="false">
+                  <elementDefinition Id="6a8d807b-46e7-49f9-b1a6-f75495b6fc04" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="eeca355b-f192-4290-b128-2aae21d64c00" LastKnownName="brush" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a897b570-22c5-44b6-9bee-30953cf6655b" name="N" direction="In" isUnique="false">
+                  <elementDefinition Id="59a71fb5-354a-4fad-b488-8ba5a7a80a1d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="572596c8-fc25-4dbb-862d-a16c294f8331" LastKnownName="string" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fb6e7488-9cc4-4720-9b01-79c5bafdcbdf" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="7df6c0e3-09bf-43b8-b9ca-7d3aefd7dcc8" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3d4746ad-ebbf-4649-841e-bf9951dec81a" name="S" direction="In" isUnique="false">
+                  <elementDefinition Id="71831b08-fdf6-495c-b58d-f97aa77eb35c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ec6d2526-e54b-43f3-a9cc-930e3c8177f1" name="Speciali" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2830b67b-c62c-4f37-9fb0-b8794b74bc01" />
+        <ownedAttributesInternal>
+          <property Id="8a750a99-7890-4a93-82da-7d7f28678011" name="Tipo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f9136c28-823d-47c1-a101-0027aea1f355" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="34cfb1ff-bd7f-4bb2-9ffb-5056c392e0b3" LastKnownName="Tipo_Speciali" />
+            </type_NamedElement>
+          </property>
+          <property Id="a5f49adb-f471-429f-a9d9-5ddebdf618be" name="Tassa_Costo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="776a5c9a-4f17-4447-ace1-29ff62850f35" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="3c5e3207-4c91-49a1-909e-aac0b5a9da11" name="Speciali" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="34c49646-77a9-4266-a217-f8dea7cb53cc" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="aaa94a06-d7de-4956-9294-9d11b66c4cea" name="N" direction="In" isUnique="false">
+                  <elementDefinition Id="41180c43-7670-42e8-b698-74bc18024ab3" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="572596c8-fc25-4dbb-862d-a16c294f8331" LastKnownName="string" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="aa8b8678-5648-447c-95b6-93f3639382df" name="T" direction="In" isUnique="false">
+                  <elementDefinition Id="a5b9d6d6-d04d-44ba-bc84-32dcb3e5f0d4" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="34cfb1ff-bd7f-4bb2-9ffb-5056c392e0b3" LastKnownName="Tipo_Speciali" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="61bd6bf1-fd6b-4e57-a5d3-aa7b4a80b22d" name="C" direction="In" isUnique="false">
+                  <elementDefinition Id="8b4f89fd-4a24-4657-ab32-5f412d407a7d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="6f7a36ba-3efd-4a2a-b08c-2caaa4440535" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
+        <elementDefinition Id="1fc7972b-bdd4-44aa-a43d-caf16dd84871" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d5ae0302-9cef-47ea-970a-aabb59fb58e9" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
+        <elementDefinition Id="2d8e68c5-5f3f-4c01-a186-660823e24547" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="80f103fa-d0ab-437a-beb1-715d09e25b37" name="List&lt;Strutture&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Strutture&gt;">
+        <elementDefinition Id="7e983dde-be4e-43cd-801f-47dab227d62c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="78a4741c-c3ea-40ee-b170-22e8a7bf6f7c" name="Tipo_Speciali" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="795e8c3b-4b0c-4866-affa-5ba8367a239e" />
+        <targetEnds>
+          <association Id="f8c140e9-184e-4d00-912f-4c7fcdcc63af" isDerived="false" sourceEndRoleName="Tipo_Speciali" targetEndRoleName="Speciali" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ec6d2526-e54b-43f3-a9cc-930e3c8177f1" LastKnownName="Speciali" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ff38e4c7-2f39-4c72-b009-8d656be89a6f" name="Tipo_Speciali" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1ea50244-892e-4d65-ad93-921d8fccb7b6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f6e6826f-6789-4490-829a-2c300e42abb7" name="Speciali" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c6ef5419-d722-4edb-83bf-f071c5a656bc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2765d850-c091-49e5-971d-26641eb31b8e" />
+          </association>
+        </targetEnds>
+        <ownedLiterals>
+          <enumerationLiteral Id="2d9f803f-ca09-4e11-9afd-48d2e653be28" name="Tassa">
+            <elementDefinition Id="57129b1d-ac3e-4d5e-a6eb-359f7237abd8" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="e7e1b719-dcdb-4319-bd7e-5dcd965d2630" name="Probabilita">
+            <elementDefinition Id="7e46e34d-383c-4b35-bb5f-824d48f5a280" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="41ce7d64-e8b6-4494-b15c-6127743ffd2c" name="Imprevisti">
+            <elementDefinition Id="54aa8211-3a49-44c8-af91-2a03b7276a84" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="cb5afbbe-4343-4fca-b223-d379b5a9c106" name="Parcheggio">
+            <elementDefinition Id="66145d68-9336-416d-a764-37b9b5276606" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="c63a63b1-2a5d-402b-b77c-9aed23fe52d2" name="Prigione">
+            <elementDefinition Id="83b6814b-cf72-441b-92ab-7ee9528ec1e8" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="34cfb1ff-bd7f-4bb2-9ffb-5056c392e0b3" name="Tipo_Speciali" isAbstract="false" isLeaf="false" cachedFullName="ProgettazioneMonopoly::Tipo_Speciali">
+        <elementDefinition Id="795e8c3b-4b0c-4866-affa-5ba8367a239e" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="572596c8-fc25-4dbb-862d-a16c294f8331" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
+        <elementDefinition Id="53590e17-1bd3-4f14-9578-67012c7d0840" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="fc47be20-4c7d-4fd4-be1e-79495444212d" name="ProgettazioneMonopoly">
+    <elementDefinition Id="12188ba9-79a1-4ec0-bf6e-b4f528e595fe" />
+    <profileInstances>
+      <packageHasProfileInstances Id="a987b0f8-1e45-4227-9ca3-b29e38bb422e">
+        <profileInstance Id="58ee7587-fe76-476f-af2f-73cb46744a1f" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a2f6e46b-5b95-43ad-a2e7-2d19b3a4f551">
+        <profileInstance Id="deba3254-f616-4396-800c-bcda60a3e286" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

@@ -19,26 +19,28 @@ namespace Monopoly.Classi
     public enum Tipo_Speciali
     { Imprevisti, Parcheggio, Prigione, Probabilita, Tassa };
 
-    //***************************************************************************//
-    //Zakk dovresti mettere un bool per controllare se è una proprietà speciale  //
-    //Chiamalo 'Edificabile' o 'Speciale', vedi te                               //
-    //***************************************************************************//
-
     public class Proprieta : Casella
     {
         public int Costo;
         public bool Ipotecato;
+        public bool Speciale;
         public List<Struttura> s = new List<Struttura>();
 
-        public Proprieta(Brush Col, string N, int C) : base(Col, N)
+        public Proprieta(Brush Col, string N, int C, bool S) : base(Col, N)
         {
             Costo = C;
+            Speciale = S;
         }
     }
 
     public class Speciali : Casella
     {
-        public Speciali(Brush Col, string N, Tipo_Speciali T) : base(Col, N)
-        { }
+        public int Tassa_Costo;
+        public Tipo_Speciali Tipo;
+        public Speciali(string N, Tipo_Speciali T, int C) : base(Brushes.Black, N)
+        {
+            Tassa_Costo = C;
+            Tipo = T;
+        }
     }
 }

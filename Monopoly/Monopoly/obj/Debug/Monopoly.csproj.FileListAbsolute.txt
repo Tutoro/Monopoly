@@ -1,1 +1,17 @@
 C:\Users\Alberto\Documents\GitHub\Monopoly\Monopoly\Monopoly\bin\Debug\Monopoly.exe.config
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly.csprojResolveAssemblyReference.cache
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\MainWindow.g.cs
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowInizioPartita.g.cs
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\App.g.cs
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly_MarkupCompile.cache
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly_MarkupCompile.lref
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\bin\Debug\Monopoly.exe.config
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\bin\Debug\Monopoly.exe
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\bin\Debug\Monopoly.pdb
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\MainWindow.baml
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowInizioPartita.baml
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly.g.resources
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly.Properties.Resources.resources
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly.csproj.GenerateResource.Cache
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly.exe
+C:\Users\15\Desktop\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\Monopoly.pdb

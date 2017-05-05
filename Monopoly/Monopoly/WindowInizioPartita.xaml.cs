@@ -37,7 +37,8 @@ namespace Monopoly
 
         private void InizioPartita(object sender, RoutedEventArgs e)
         {
-            new MainWindow(Giocatori);
+            new MainWindow(Giocatori).Show();
+            this.Close();
         }
 
         private void AggiornaGiocatori(object sender, KeyboardFocusChangedEventArgs e)

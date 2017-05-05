@@ -81,7 +81,7 @@ namespace Monopoly.Classi
                 return false;
 
             Proprieta t = (Proprieta)C;
-            if (t./*Edificabile*/==/*false*/)
+            if (t.Speciale==true)
                 return false;
 
             for(int i = 0; i < t.s.Count; i++)

@@ -16,14 +16,14 @@ using Monopoly.Classi;
 
 namespace Monopoly
 {
-    /// <summary>
-    /// Logica di interazione per MainWindow.xaml
-    /// </summary>
+    //! \class MainWindow \brief Classe della finestra principale
     public partial class MainWindow : Window
     {
-        Giocatore[] Giocatori;
-        Casella[] Caselle;
-        Random R;
+        Giocatore[] Giocatori; //! \var Giocatori \brief Vettore che contiene i giocatori
+        Casella[] Caselle; //! \var Caselle \brief Vettore che contiene tutte le caselle del tabellone
+        Random R; //! \var R \brief Variabile Random
+
+        int Turno; //! \var Turno \brief Variabile intera che contiene di quale giocatgore è il turno
 
         public MainWindow(Giocatore[] G)
         {
@@ -31,51 +31,74 @@ namespace Monopoly
             Giocatori = G;
             R = new Random();
             CreaTabellone();
+
+            Turno = 0;
+            AggiornaInterfaccia();
+        }
+
+        void AggiornaInterfaccia()
+        {
+            TextBox_SoldiUtenti.Text = "";
+            for (int i = 0; i < Giocatori.Length; i++)
+            {
+                if (i == Turno)
+                    TextBox_SoldiUtenti.Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi + Environment.NewLine;
+                else
+                    TextBox_SoldiUtenti.Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi + Environment.NewLine;
+            }
         }
 
         void CreaTabellone()
         {
-            Caselle = new Casella[36];
-            Caselle[0] = new Speciali();
-            Caselle[1] = new Proprieta("Vicolo Corto", 6000, Brushes.Brown);
-            Caselle[2] = new Speciali();
-            Caselle[3] = new Proprieta("Vicolo Stretto", 6000, Brushes.Brown);
-            Caselle[4] = new Speciali();
-            Caselle[5] = new Proprieta_Speciali("Stazione Sud", 20000, Brushes.Black);
-            Caselle[6] = new Proprieta("Bastioni Gran Sasso", 10000, Brushes.LightBlue);
-            Caselle[7] = new Speciali();
-            Caselle[8] = new Proprieta("Viale Monterosa", 10000, Brushes.LightBlue);
-            Caselle[9] = new Proprieta("Viale Vesuvio", 12000, Brushes.LightBlue);
-            Caselle[10] = new Speciali();
-            Caselle[11] = new Proprieta("Via Accademia", 14000, Brushes.Orange);
-            Caselle[12] = new Proprieta_Speciali("Società Elettrica", 15000, Brushes.Yellow);
-            Caselle[13] = new Proprieta("Corso Ateneo", 14000, Brushes.Orange);
-            Caselle[14] = new Proprieta("Piazza Università", 16000, Brushes.Orange);
-            Caselle[15] = new Proprieta_Speciali("Stazione Ovest", 20000, Brushes.Black);
-            Caselle[16] = new Proprieta("Via Verdi", 18000, Brushes.Brown);
-            Caselle[17] = new Speciali();
-            Caselle[18] = new Proprieta("Corso Raffaello", 18000, Brushes.Brown);
-            Caselle[19] = new Proprieta("Piazza Dante", 20000, Brushes.Brown);
-            Caselle[20] = new Speciali();
-            Caselle[21] = new Proprieta("Via Marco Polo", 22000, Brushes.Red);
-            Caselle[22] = new Speciali();
-            Caselle[23] = new Proprieta("Corso Magellano", 22000, Brushes.Red);
-            Caselle[24] = new Proprieta("Largo Colombo", 24000, Brushes.Red);
-            Caselle[25] = new Proprieta_Speciali("Stazione Nord", 20000, Brushes.Black);
-            Caselle[26] = new Proprieta("Viale Costantino", 26000, Brushes.Yellow);
-            Caselle[27] = new Proprieta("Viale Traiano", 26000, Brushes.Yellow);
-            Caselle[28] = new Proprieta_Speciali("Società Acqua Potabile", 15000, Brushes.Yellow);
-            Caselle[29] = new Proprieta("Piazza Giulio Cesare", 28000, Brushes.Yellow);
-            Caselle[30] = new Speciali();
-            Caselle[31] = new Proprieta("Via Roma", 30000, Brushes.Green);
-            Caselle[32] = new Proprieta("Corso Impero", 30000, Brushes.Green);
-            Caselle[33] = new Speciali();
-            Caselle[34] = new Proprieta("Largo Augusto", 32000, Brushes.Green);
-            Caselle[35] = new Proprieta_Speciali("Stazione Est", 20000, Brushes.Black);
-            Caselle[36] = new Speciali();
-            Caselle[37] = new Proprieta("Viale Dei Giardini", 35000, Brushes.Blue);
-            Caselle[38] = new Speciali();
-            Caselle[39] = new Proprieta("Parco Della Vittoria", 40000, Brushes.Blue);
+            Caselle = new Casella[40];
+            Caselle[0] = new Speciali("Via!", Tipo_Speciali.Tassa, -20000);
+            Caselle[1] = new Proprieta(Brushes.Brown, "Vicolo Corto", 6000, false);
+            Caselle[2] = new Speciali("Probabilità", Tipo_Speciali.Probabilita, 0);
+            Caselle[3] = new Proprieta(Brushes.Brown, "Vicolo Stretto", 6000, false);
+            Caselle[4] = new Speciali("Tassa Patrimoniale", Tipo_Speciali.Tassa, 20000);
+            Caselle[5] = new Proprieta(Brushes.Black, "Stazione Sud", 20000, true);
+            Caselle[6] = new Proprieta(Brushes.LightBlue, "Bastioni Gran Sasso", 10000, false);
+            Caselle[7] = new Speciali("Imprevisti", Tipo_Speciali.Imprevisti, 0);
+            Caselle[8] = new Proprieta(Brushes.LightBlue, "Viale Monterosa", 10000, false);
+            Caselle[9] = new Proprieta(Brushes.LightBlue, "Viale Vesuvio", 12000, false);
+            Caselle[10] = new Speciali("Prigione / Transito", Tipo_Speciali.Parcheggio, 0);
+            Caselle[11] = new Proprieta(Brushes.Orange, "Via Accademia", 14000, false);
+            Caselle[12] = new Proprieta(Brushes.Yellow, "Società Elettrica", 15000, true);
+            Caselle[13] = new Proprieta(Brushes.Orange, "Corso Ateneo", 14000, false);
+            Caselle[14] = new Proprieta(Brushes.Orange, "Piazza Università", 16000, false);
+            Caselle[15] = new Proprieta(Brushes.Black, "Stazione Ovest", 20000, true);
+            Caselle[16] = new Proprieta(Brushes.Brown, "Via Verdi", 18000, false);
+            Caselle[17] = new Speciali("Probabilità", Tipo_Speciali.Probabilita, 0);
+            Caselle[18] = new Proprieta(Brushes.Brown, "Corso Raffaello", 18000, false);
+            Caselle[19] = new Proprieta(Brushes.Brown, "Piazza Dante", 20000, false);
+            Caselle[20] = new Speciali("Parcheggio", Tipo_Speciali.Parcheggio, 0);
+            Caselle[21] = new Proprieta(Brushes.Red, "Via Marco Polo", 22000, false);
+            Caselle[22] = new Speciali("Imprevisti", Tipo_Speciali.Imprevisti, 0);
+            Caselle[23] = new Proprieta(Brushes.Red, "Corso Magellano", 22000, false);
+            Caselle[24] = new Proprieta(Brushes.Red, "Largo Colombo", 24000, false);
+            Caselle[25] = new Proprieta(Brushes.Black, "Stazione Nord", 20000, true);
+            Caselle[26] = new Proprieta(Brushes.Yellow, "Viale Costantino", 26000, false);
+            Caselle[27] = new Proprieta(Brushes.Yellow, "Viale Traiano", 26000, false);
+            Caselle[28] = new Proprieta(Brushes.Yellow, "Società Acqua Potabile", 15000, true);
+            Caselle[29] = new Proprieta(Brushes.Yellow, "Piazza Giulio Cesare", 28000, false);
+            Caselle[30] = new Speciali("In Prigione!", Tipo_Speciali.Prigione, 0);
+            Caselle[31] = new Proprieta(Brushes.Green, "Via Roma", 30000, false);
+            Caselle[32] = new Proprieta(Brushes.Green, "Corso Impero", 30000, false);
+            Caselle[33] = new Speciali("Probabilità", Tipo_Speciali.Probabilita, 0);
+            Caselle[34] = new Proprieta(Brushes.Green, "Largo Augusto", 32000, false);
+            Caselle[35] = new Proprieta(Brushes.Black, "Stazione Est", 20000, true);
+            Caselle[36] = new Speciali("Imprevisti", Tipo_Speciali.Imprevisti, 0);
+            Caselle[37] = new Proprieta(Brushes.Blue, "Viale Dei Giardini", 35000, false);
+            Caselle[38] = new Speciali("Tassa di Lusso", Tipo_Speciali.Tassa, 10000);
+            Caselle[39] = new Proprieta(Brushes.Blue, "Parco Della Vittoria", 40000, false);
+        }
+
+        private void PassaTurno(object sender, RoutedEventArgs e)
+        {
+            Turno++;
+            if (Turno == 4)
+                Turno = 0;
+            AggiornaInterfaccia();
         }
     }
 }

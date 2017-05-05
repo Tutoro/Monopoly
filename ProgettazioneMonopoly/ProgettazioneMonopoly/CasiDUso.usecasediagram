@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5d08d26a-0725-4951-8315-2406570d8ab7" name="UMLUseCaseDiagram1" linkedPackageId="a0f87a3c-0396-453c-95c3-1b5a62d4118a" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="ceed3640-a81c-44a5-9e3e-63137994b501">
+      <profileInstance Id="1ca62388-7db7-47e4-a1f2-5f8ade81cfe9" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="237f43ab-438b-40cb-ab63-63baf9a7c49d">
+      <profileInstance Id="4b44adff-d86b-4957-a797-2684b530731d" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="82f0c9be-ad8c-482c-9c26-f709d23bb4ad" name="Giocatore 3" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b6aecdd9-6456-4086-8898-ce9c0a2aa436" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fedc7266-077f-41e5-9490-90073c5589bf" name="Tira i dadi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="da93cb15-b5a1-465c-8052-d5eaf5afe17b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="972cf380-c380-411b-b67b-3250ab4dd6af" name="Compra/Vendi Proprietà" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f99516fd-f0a3-447b-99f8-504839d730e3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e54bda97-2902-4424-9c6f-8f99dd1db943" name="Vendi strutture" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="242622db-2802-4dc5-9b0c-75319ceeb60a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="feb604ef-8d8b-4d9d-bf30-376a00aafc9c" name="Scambia" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="22ca32c2-690a-4357-9c56-404b22dc07aa" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="1c02d1a5-2750-4724-8c72-7b50ea7fdd2b" name="Giocatore 1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="db7740e2-2087-4d54-890c-811c4545f7c2" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="1d74369f-7220-41d9-a757-8824f8c2f3e1" name="Giocatore 4" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="60f0c65b-ebd2-47b0-ab45-e4cddccd5e80" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="eec5f7da-190a-4234-9bfe-099c924d2b24" name="Giocatore 2" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="488e9310-58ab-48e5-a715-b05dfa8cfa49" />
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="a0f87a3c-0396-453c-95c3-1b5a62d4118a" name="ProgettazioneMonopoly">
+    <elementDefinition Id="12188ba9-79a1-4ec0-bf6e-b4f528e595fe" />
+  </package>
+</useCaseModelRoot>

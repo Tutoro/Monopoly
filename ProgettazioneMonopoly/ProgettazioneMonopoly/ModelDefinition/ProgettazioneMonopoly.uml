@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="12188ba9-79a1-4ec0-bf6e-b4f528e595fe"
   name="ProgettazioneMonopoly" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -358,6 +358,24 @@
                 LastKnownLocation="ProgettazioneMonopoly.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="78a06583-2745-4a82-957e-86d3ba47b49b"
+            name="Nome"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="53590e17-1bd3-4f14-9578-67012c7d0840"
+                LastKnownName="string"
+                LastKnownLocation="ProgettazioneMonopoly.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -371,14 +389,28 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f24ee2de-b6ec-49c0-a703-a813a5c9a6fa"
-                  name="Colore"
+                  Id="dd64dddf-50f5-49d8-b81e-ccd4fa7ca0c1"
+                  name="Col"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
                       Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
                       LastKnownName="brush"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a1ae1f4d-c077-48f2-9113-f4c760dc8bc8"
+                  name="N"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53590e17-1bd3-4f14-9578-67012c7d0840"
+                      LastKnownName="string"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -612,6 +644,24 @@
                 LastKnownLocation="ProgettazioneMonopoly.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="810d1078-a9ba-497a-8cf9-fa3904417e4d"
+            name="Speciale"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="2d8e68c5-5f3f-4c01-a186-660823e24547"
+                LastKnownName="bool"
+                LastKnownLocation="ProgettazioneMonopoly.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -625,8 +675,36 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="18c94263-1d12-4d7b-bc6a-18eb40efcb9c"
-                  name="Costo"
+                  Id="6a8d807b-46e7-49f9-b1a6-f75495b6fc04"
+                  name="Col"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
+                      LastKnownName="brush"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="59a71fb5-354a-4fad-b488-8ba5a7a80a1d"
+                  name="N"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53590e17-1bd3-4f14-9578-67012c7d0840"
+                      LastKnownName="string"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7df6c0e3-09bf-43b8-b9ca-7d3aefd7dcc8"
+                  name="C"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
@@ -639,14 +717,14 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f6167ed7-c91c-4885-bc52-aa73b4b8d72a"
-                  name="Colore"
+                  Id="71831b08-fdf6-495c-b58d-f97aa77eb35c"
+                  name="S"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
-                      LastKnownName="brush"
+                      Id="2d8e68c5-5f3f-4c01-a186-660823e24547"
+                      LastKnownName="bool"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -801,8 +879,22 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bd97df02-740b-47b5-bd99-eb59732cf801"
-                  name="Tipo"
+                  Id="41180c43-7670-42e8-b698-74bc18024ab3"
+                  name="N"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53590e17-1bd3-4f14-9578-67012c7d0840"
+                      LastKnownName="string"
+                      LastKnownLocation="ProgettazioneMonopoly.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a5b9d6d6-d04d-44ba-bc84-32dcb3e5f0d4"
+                  name="T"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
@@ -815,14 +907,14 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c72ead6d-93fa-4dcc-bc9f-a4152151096e"
-                  name="Colore"
+                  Id="8b4f89fd-4a24-4657-ab32-5f412d407a7d"
+                  name="C"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="70394c2d-4901-4cff-9a4e-a99a6f2198ca"
-                      LastKnownName="brush"
+                      Id="1fc7972b-bdd4-44aa-a43d-caf16dd84871"
+                      LastKnownName="int"
                       LastKnownLocation="ProgettazioneMonopoly.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -897,6 +989,79 @@
             name="Prigione" />
         </ownedLiterals>
       </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="53590e17-1bd3-4f14-9578-67012c7d0840"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="43aa676e-2344-4e9d-bb58-3e4c88e47d7c"
+        name="ProgettazioneMonopoly::N" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="b6aecdd9-6456-4086-8898-ce9c0a2aa436"
+        name="Giocatore 3"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="4d999b7d-70af-4c32-acc4-c976544a5b6e"
+        name="Actor2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="da93cb15-b5a1-465c-8052-d5eaf5afe17b"
+        name="Tira i dadi"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f99516fd-f0a3-447b-99f8-504839d730e3"
+        name="Compra/Vendi Proprietà"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="242622db-2802-4dc5-9b0c-75319ceeb60a"
+        name="Vendi strutture"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="22ca32c2-690a-4357-9c56-404b22dc07aa"
+        name="Scambia"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="db7740e2-2087-4d54-890c-811c4545f7c2"
+        name="Giocatore 1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="60f0c65b-ebd2-47b0-ab45-e4cddccd5e80"
+        name="Giocatore 4"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="488e9310-58ab-48e5-a715-b05dfa8cfa49"
+        name="Giocatore 2"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

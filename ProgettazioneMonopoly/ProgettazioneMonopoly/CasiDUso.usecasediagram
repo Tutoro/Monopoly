@@ -1,27 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5d08d26a-0725-4951-8315-2406570d8ab7" name="UMLUseCaseDiagram1" linkedPackageId="a0f87a3c-0396-453c-95c3-1b5a62d4118a" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="ceed3640-a81c-44a5-9e3e-63137994b501">
-      <profileInstance Id="1ca62388-7db7-47e4-a1f2-5f8ade81cfe9" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="237f43ab-438b-40cb-ab63-63baf9a7c49d">
-      <profileInstance Id="4b44adff-d86b-4957-a797-2684b530731d" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
-      <actor Id="82f0c9be-ad8c-482c-9c26-f709d23bb4ad" name="Giocatore 3" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="b6aecdd9-6456-4086-8898-ce9c0a2aa436" />
-      </actor>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="fedc7266-077f-41e5-9490-90073c5589bf" name="Tira i dadi" isAbstract="false" isLeaf="false">
+      <useCase Id="fedc7266-077f-41e5-9490-90073c5589bf" name="Passa" isAbstract="false" isLeaf="false">
         <elementDefinition Id="da93cb15-b5a1-465c-8052-d5eaf5afe17b" />
       </useCase>
     </useCaseModelRootHasTypes>
@@ -41,22 +22,92 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <actor Id="1c02d1a5-2750-4724-8c72-7b50ea7fdd2b" name="Giocatore 1" isAbstract="false" isLeaf="false">
+      <actor Id="1c02d1a5-2750-4724-8c72-7b50ea7fdd2b" name="Giocatore" isAbstract="false" isLeaf="false">
         <elementDefinition Id="db7740e2-2087-4d54-890c-811c4545f7c2" />
-      </actor>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <actor Id="1d74369f-7220-41d9-a757-8824f8c2f3e1" name="Giocatore 4" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="60f0c65b-ebd2-47b0-ab45-e4cddccd5e80" />
-      </actor>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <actor Id="eec5f7da-190a-4234-9bfe-099c924d2b24" name="Giocatore 2" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="488e9310-58ab-48e5-a715-b05dfa8cfa49" />
+        <targetEnds>
+          <association Id="ec0d5530-b16e-468b-b848-c4a96dda266c" isDerived="false" sourceEndRoleName="Giocatore 1" targetEndRoleName="Tira i dadi" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fedc7266-077f-41e5-9490-90073c5589bf" LastKnownName="Passa" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="878a3c9a-59f3-4ac2-9e89-6716b41391d6" name="Giocatore 1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="03ce3f99-8ee9-4d4d-b00e-2c754a6c6c3d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="791ba8aa-7a8d-42d7-b469-c92c24e6d3ee" name="Tira i dadi" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d2a9fe8b-9116-4c2f-ab86-9d2035e48475" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cca95565-926c-4287-9bfb-04046b5ef09f" />
+          </association>
+          <association Id="d560d4f2-4697-49f3-a84a-ddd878074c90" isDerived="false" sourceEndRoleName="Giocatore" targetEndRoleName="Compra/Vendi Proprietà" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="972cf380-c380-411b-b67b-3250ab4dd6af" LastKnownName="Compra/Vendi Proprietà" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a2ad4816-7984-47dd-bb2f-17dc93000f02" name="Giocatore" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5986c2c6-e5b0-400a-acea-ebf698cf5c13" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8842b84-7524-40b6-aa0f-7615e8a6291a" name="Compra/Vendi Proprietà" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d894067b-b680-4c9c-893e-ceb13ced9dfb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5b371274-65cb-448c-848e-2c8efc668c57" />
+          </association>
+          <association Id="b9839ceb-6f9c-4d90-98a9-a74de7a65520" isDerived="false" sourceEndRoleName="Giocatore" targetEndRoleName="Vendi strutture" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e54bda97-2902-4424-9c6f-8f99dd1db943" LastKnownName="Vendi strutture" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b1e834a8-ab65-49d6-9a03-4806c6bce52a" name="Giocatore" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="90c3efb7-6369-4170-8f34-7bb2bd8062e6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fc934ac2-15f6-4292-bfce-a7d610a988e7" name="Vendi strutture" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="96bfcb02-346a-493f-8e2e-5afbd0577566" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3e853226-48af-48e2-aace-8920a533fbbf" />
+          </association>
+          <association Id="cc886342-8f57-4fde-99eb-cdc2cd33c9ac" isDerived="false" sourceEndRoleName="Giocatore" targetEndRoleName="Scambia" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="feb604ef-8d8b-4d9d-bf30-376a00aafc9c" LastKnownName="Scambia" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="618c94c2-ad7d-4ff1-bf01-1e2a9a620d92" name="Giocatore" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e90fe15c-a5e6-4e6f-9539-7c7dbf3d50d2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="10388de1-6b99-4213-8772-82bd5ff38ac0" name="Scambia" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3b39c370-4217-4cb1-a635-d23f0705e8f5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fa372ed1-e980-4d77-b2c0-825c3966b39f" />
+          </association>
+        </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="a0f87a3c-0396-453c-95c3-1b5a62d4118a" name="ProgettazioneMonopoly">
     <elementDefinition Id="12188ba9-79a1-4ec0-bf6e-b4f528e595fe" />
+    <profileInstances>
+      <packageHasProfileInstances Id="ceed3640-a81c-44a5-9e3e-63137994b501">
+        <profileInstance Id="1ca62388-7db7-47e4-a1f2-5f8ade81cfe9" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="237f43ab-438b-40cb-ab63-63baf9a7c49d">
+        <profileInstance Id="4b44adff-d86b-4957-a797-2684b530731d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

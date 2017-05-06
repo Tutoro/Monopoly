@@ -80,6 +80,24 @@
                 LastKnownLocation="ProgettazioneMonopoly.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="27600c61-b9cb-41b9-86e6-facfd5622655"
+            name="Posizione"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="1fc7972b-bdd4-44aa-a43d-caf16dd84871"
+                LastKnownName="int"
+                LastKnownLocation="ProgettazioneMonopoly.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -639,8 +657,8 @@
             isComposite="false">
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="7e983dde-be4e-43cd-801f-47dab227d62c"
-                LastKnownName="List&lt;Strutture&gt;"
+                Id="4c95ec72-8814-49b5-9c0a-f1f4d1e01fb6"
+                LastKnownName="List&lt;Struttura&gt;"
                 LastKnownLocation="ProgettazioneMonopoly.uml" />
             </type_NamedElement>
           </property>
@@ -659,6 +677,24 @@
               <undefinedTypeMoniker
                 Id="2d8e68c5-5f3f-4c01-a186-660823e24547"
                 LastKnownName="bool"
+                LastKnownLocation="ProgettazioneMonopoly.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b3b3288c-cb57-4e62-9830-5121e5821830"
+            name="Proprietario"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="2d1a3991-430e-4992-ab9e-97ad36053efd"
+                LastKnownName="Giocatore"
                 LastKnownLocation="ProgettazioneMonopoly.uml" />
             </type_NamedElement>
           </property>
@@ -1017,7 +1053,7 @@
     <packageHasNamedElement>
       <useCase
         Id="da93cb15-b5a1-465c-8052-d5eaf5afe17b"
-        name="Tira i dadi"
+        name="Passa"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>
@@ -1045,9 +1081,168 @@
     <packageHasNamedElement>
       <actor
         Id="db7740e2-2087-4d54-890c-811c4545f7c2"
-        name="Giocatore 1"
+        name="Giocatore"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="cca95565-926c-4287-9bfb-04046b5ef09f"
+            isDerived="false"
+            sourceEndRoleName="Giocatore 1"
+            targetEndRoleName="Tira i dadi"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="da93cb15-b5a1-465c-8052-d5eaf5afe17b"
+              LastKnownName="Passa"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="03ce3f99-8ee9-4d4d-b00e-2c754a6c6c3d"
+                  name="Giocatore 1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d2a9fe8b-9116-4c2f-ab86-9d2035e48475"
+                  name="Tira i dadi"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5b371274-65cb-448c-848e-2c8efc668c57"
+            isDerived="false"
+            sourceEndRoleName="Giocatore"
+            targetEndRoleName="Compra/Vendi Proprietà"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f99516fd-f0a3-447b-99f8-504839d730e3"
+              LastKnownName="Compra/Vendi Proprietà"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5986c2c6-e5b0-400a-acea-ebf698cf5c13"
+                  name="Giocatore"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d894067b-b680-4c9c-893e-ceb13ced9dfb"
+                  name="Compra/Vendi Proprietà"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3e853226-48af-48e2-aace-8920a533fbbf"
+            isDerived="false"
+            sourceEndRoleName="Giocatore"
+            targetEndRoleName="Vendi strutture"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="242622db-2802-4dc5-9b0c-75319ceeb60a"
+              LastKnownName="Vendi strutture"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="90c3efb7-6369-4170-8f34-7bb2bd8062e6"
+                  name="Giocatore"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="96bfcb02-346a-493f-8e2e-5afbd0577566"
+                  name="Vendi strutture"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="fa372ed1-e980-4d77-b2c0-825c3966b39f"
+            isDerived="false"
+            sourceEndRoleName="Giocatore"
+            targetEndRoleName="Scambia"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="22ca32c2-690a-4357-9c56-404b22dc07aa"
+              LastKnownName="Scambia"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e90fe15c-a5e6-4e6f-9539-7c7dbf3d50d2"
+                  name="Giocatore"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3b39c370-4217-4cb1-a635-d23f0705e8f5"
+                  name="Scambia"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <actor
@@ -1061,7 +1256,54 @@
         Id="488e9310-58ab-48e5-a715-b05dfa8cfa49"
         name="Giocatore 2"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="9159a7e7-28f1-44d3-add7-a27adbfcb5c2"
+            isDerived="false"
+            sourceEndRoleName="Giocatore 2"
+            targetEndRoleName="Compra/Vendi Proprietà"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f99516fd-f0a3-447b-99f8-504839d730e3"
+              LastKnownName="Compra/Vendi Proprietà"
+              LastKnownLocation="ProgettazioneMonopoly.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f2ecf41-a6fd-4328-8c65-8d3fd48730d1"
+                  name="Giocatore 2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c97f4df2-7f0e-499d-b21b-167eb16a2fae"
+                  name="Compra/Vendi Proprietà"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4c95ec72-8814-49b5-9c0a-f1f4d1e01fb6"
+        name="List&lt;Struttura&gt;" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

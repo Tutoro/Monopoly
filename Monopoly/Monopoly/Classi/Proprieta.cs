@@ -24,12 +24,16 @@ namespace Monopoly.Classi
         public int Costo;
         public bool Ipotecato;
         public bool Speciale;
-        public List<Struttura> s = new List<Struttura>();
+        public List<Struttura> Strutture;
+        public Giocatore Proprietario;
 
         public Proprieta(Brush Col, string N, int C, bool S) : base(Col, N)
         {
             Costo = C;
             Speciale = S;
+            Proprietario = null;
+            Ipotecato = false;
+            Strutture = new List<Struttura>();
         }
     }
 

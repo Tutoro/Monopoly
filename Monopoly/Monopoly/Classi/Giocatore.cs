@@ -28,6 +28,7 @@ namespace Monopoly.Classi
         public Brush Colore; //! \var Colore \brief Colore che rappresenta il giocatore sul campo
         public List<Casella> Proprieta; //! \var Proprieta \brief Lista di Caselle che contiene le Proprietà (normali e speciali) che il giocatore possiede
         public int Soldi; //! \var Soldi \brief Soldi che il giocatore ha a disposizione
+        public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
 
         //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
         //! \param C \brief Colore del giocatore
@@ -37,6 +38,7 @@ namespace Monopoly.Classi
             Colore = C;
             Soldi = S;
             Proprieta = new List<Casella>();
+            Posizione = 0;
         }
 
         //! \fn Compra \brief Compra una proprietà prestabilita
@@ -84,11 +86,11 @@ namespace Monopoly.Classi
             if (t.Speciale==true)
                 return false;
 
-            for(int i = 0; i < t.s.Count; i++)
+            for(int i = 0; i < t.Strutture.Count; i++)
             {
-                if(t.s[i].Tipo == S.Tipo)
+                if(t.Strutture[i].Tipo == S.Tipo)
                 {
-                    t.s.RemoveAt(i);
+                    t.Strutture.RemoveAt(i);
                     return true;
                 }
             }

@@ -8,7 +8,7 @@
         Title="MainWindow" Height="600" Width="800">
     <Grid x:Name="Griglia_Principale">
         <Image x:Name="Image_Campo" HorizontalAlignment="Left" Height="500" Margin="10,10,0,0" VerticalAlignment="Top" Width="500"/>
-        <Button x:Name="Button_Compra" Content="Compra / Ipoteca" HorizontalAlignment="Left" Margin="10,515,0,0" VerticalAlignment="Top" Width="160" Height="44"/>
+        <Button x:Name="Button_Compra" Content="Compra / Ipoteca" HorizontalAlignment="Left" Margin="10,515,0,0" VerticalAlignment="Top" Width="160" Height="44" Click="CompraProprieta"/>
         <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="175,515,0,0" VerticalAlignment="Top" Width="170" Height="44"/>
         <Button x:Name="Button_Passa" Content="Passa" HorizontalAlignment="Left" Margin="350,515,0,0" VerticalAlignment="Top" Width="160" Height="44" Click="PassaTurno"/>
         <TextBox x:Name="TextBox_SoldiUtenti" HorizontalAlignment="Left" Height="100" Margin="515,459,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267" IsReadOnly="True"/>

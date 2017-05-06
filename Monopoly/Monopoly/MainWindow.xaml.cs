@@ -14,9 +14,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Monopoly.Classi;
 
+/*!
+\author    Arduini Alberto
+\version   0.1
+\date      05/05/2017
+*/
+
 namespace Monopoly
 {
-    //! \class MainWindow \brief Classe della finestra principale
+    //! \class MainWindow
+    //! \brief Classe della finestra principale
     public partial class MainWindow : Window
     {
         Giocatore[] Giocatori; //! \var Giocatori \brief Vettore che contiene i giocatori
@@ -45,6 +52,22 @@ namespace Monopoly
                     TextBox_SoldiUtenti.Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi + Environment.NewLine;
                 else
                     TextBox_SoldiUtenti.Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi + Environment.NewLine;
+            }
+
+            if(Caselle[Giocatori[Turno].Posizione] is Proprieta)
+            {
+                Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
+                if(ProprietaCorrente.Proprietario == null)
+                    Button_Compra.IsEnabled = true;
+                else
+                {
+                    Button_Compra.IsEnabled = false;
+                    if(ProprietaCorrente.Proprietario != Giocatori[Turno])
+                    {
+                        ProprietaCorrente.Proprietario.Soldi += ProprietaCorrente.Costo / 4;
+                        Giocatori[Turno].Soldi -= ProprietaCorrente.Costo / 4;
+                    }
+                }
             }
         }
 
@@ -95,9 +118,28 @@ namespace Monopoly
 
         private void PassaTurno(object sender, RoutedEventArgs e)
         {
+            int Dado = R.Next(1, 7);
+            Giocatori[Turno].Posizione += R.Next(1, 7) + Dado;
+            if (Giocatori[Turno].Posizione >= Caselle.Length)
+                Giocatori[Turno].Posizione = Giocatori[Turno].Posizione - 40;
+
             Turno++;
-            if (Turno == 4)
+            if (Turno == Giocatori.Length)
                 Turno = 0;
+            AggiornaInterfaccia();
+        }
+
+        private void CompraProprieta(object sender, RoutedEventArgs e)
+        {
+            Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
+            if(ProprietaCorrente.Costo > Giocatori[Turno].Soldi)
+            {
+                MessageBox.Show("Non hai abbastanza soldi");
+            }
+            else
+            {
+                Giocatori[Turno].Soldi -= ProprietaCorrente.Costo;
+            }
             AggiornaInterfaccia();
         }
     }

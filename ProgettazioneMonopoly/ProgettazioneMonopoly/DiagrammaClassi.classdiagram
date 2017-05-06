@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="d8cd1c84-50c5-4185-8c7d-3b537a69484d" name="UMLClassDiagram1" linkedPackageId="fc47be20-4c7d-4fd4-be1e-79495444212d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="d8cd1c84-50c5-4185-8c7d-3b537a69484d" name="UMLClassDiagram1" linkedPackageId="fc47be20-4c7d-4fd4-be1e-79495444212d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="157ea774-f93f-4a30-a817-7bdd2bfbe518" name="Giocatore" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -21,6 +21,12 @@
             <elementDefinition Id="1e28f1fc-fa98-42cb-9d43-c76b2ec5f03b" />
             <type_NamedElement>
               <referencedTypeMoniker Id="60a65966-8c56-4b65-8888-98cf4c6777f1" LastKnownName="List&lt;Casella&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="da380f0e-1075-4fd3-893a-bf3457fb280b" name="Posizione" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="27600c61-b9cb-41b9-86e6-facfd5622655" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="17c492a4-3003-4181-b879-45716b09d8cf" LastKnownName="int" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -320,13 +326,19 @@
           <property Id="73467312-4fa8-43b2-9799-c1ba2f7bb442" name="Strutture" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="9036b578-ca8d-4554-8564-52c4654a8f0d" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="80f103fa-d0ab-437a-beb1-715d09e25b37" LastKnownName="List&lt;Strutture&gt;" />
+              <referencedTypeMoniker Id="a0ec9413-2b53-4f83-bd95-f9e331adc7f0" LastKnownName="List&lt;Struttura&gt;" />
             </type_NamedElement>
           </property>
           <property Id="478b64c4-ddf8-4241-a651-e23fd69b3343" name="Speciale" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="810d1078-a9ba-497a-8cf9-fa3904417e4d" />
             <type_NamedElement>
               <referencedTypeMoniker Id="14ca3da8-9ea1-4865-a835-969b125e1572" LastKnownName="bool" />
+            </type_NamedElement>
+          </property>
+          <property Id="b9070b75-a103-49c0-bfb0-97d7d49cb40d" name="Proprietario" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3b3288c-cb57-4e62-9830-5121e5821830" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2fa09d21-e98d-461a-8905-1b63e402f4c6" LastKnownName="Giocatore" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -431,11 +443,6 @@
         <elementDefinition Id="2d8e68c5-5f3f-4c01-a186-660823e24547" />
       </referencedType>
     </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="80f103fa-d0ab-437a-beb1-715d09e25b37" name="List&lt;Strutture&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Strutture&gt;">
-        <elementDefinition Id="7e983dde-be4e-43cd-801f-47dab227d62c" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
       <enumeration Id="78a4741c-c3ea-40ee-b170-22e8a7bf6f7c" name="Tipo_Speciali" isAbstract="false" isLeaf="false">
         <elementDefinition Id="795e8c3b-4b0c-4866-affa-5ba8367a239e" />
@@ -484,6 +491,16 @@
     <packageHasNamedElement>
       <referencedType Id="572596c8-fc25-4dbb-862d-a16c294f8331" name="string" isAbstract="false" isLeaf="false" cachedFullName="string">
         <elementDefinition Id="53590e17-1bd3-4f14-9578-67012c7d0840" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2fa09d21-e98d-461a-8905-1b63e402f4c6" name="Giocatore" isAbstract="false" isLeaf="false" cachedFullName="ProgettazioneMonopoly::Giocatore">
+        <elementDefinition Id="2d1a3991-430e-4992-ab9e-97ad36053efd" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="a0ec9413-2b53-4f83-bd95-f9e331adc7f0" name="List&lt;Struttura&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Struttura&gt;">
+        <elementDefinition Id="4c95ec72-8814-49b5-9c0a-f1f4d1e01fb6" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

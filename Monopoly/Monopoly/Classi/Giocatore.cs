@@ -25,7 +25,7 @@ namespace Monopoly.Classi
     //! \brief Classe che rappresenta il giocatore nel programma
     public class Giocatore
     {
-        public Brush Colore; //! \var Colore \brief Colore che rappresenta il giocatore sul campo
+        public Ellipse Pedina; //! \var Pedina \brief Pedina che rappresenta il giocatore sul campo
         public List<Casella> Proprieta; //! \var Proprieta \brief Lista di Caselle che contiene le Proprietà (normali e speciali) che il giocatore possiede
         public int Soldi; //! \var Soldi \brief Soldi che il giocatore ha a disposizione
         public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
@@ -35,7 +35,13 @@ namespace Monopoly.Classi
         //! \param S \brief Soldi iniziali del giocatore
         public Giocatore(Brush C, int S)
         {
-            Colore = C;
+            Pedina = new Ellipse();
+            Pedina.Fill = C;
+            Pedina.Stroke = Brushes.Black;
+            Pedina.HorizontalAlignment = HorizontalAlignment.Left;
+            Pedina.VerticalAlignment = VerticalAlignment.Top;
+            Pedina.Width = 10;
+            Pedina.Height = 10;
             Soldi = S;
             Proprieta = new List<Casella>();
             Posizione = 0;

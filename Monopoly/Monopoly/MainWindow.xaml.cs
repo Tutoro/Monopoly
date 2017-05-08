@@ -30,7 +30,7 @@ namespace Monopoly
         Casella[] Caselle; //! \var Caselle \brief Vettore che contiene tutte le caselle del tabellone
         Random R; //! \var R \brief Variabile Random
 
-        int Turno; //! \var Turno \brief Variabile intera che contiene di quale giocatgore è il turno
+        int Turno; //! \var Turno \brief Variabile intera che contiene di quale giocatore è il turno
 
         public MainWindow(Giocatore[] G)
         {
@@ -52,8 +52,21 @@ namespace Monopoly
                     TextBox_SoldiUtenti.Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi + Environment.NewLine;
                 else
                     TextBox_SoldiUtenti.Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi + Environment.NewLine;
-            }
 
+                if (Giocatori[i].Posizione >= 0 && Giocatori[i].Posizione < 10)
+                    Giocatori[i].Pedina.Margin = new Thickness(83.125 + 70.31 + (10 - Giocatori[i].Posizione) * 70.31, 828.435, 0, 0);
+
+                if (Giocatori[i].Posizione >= 10 && Giocatori[i].Posizione < 20)
+                    Giocatori[i].Pedina.Margin = new Thickness(83.125, 83.125 + 70.31 + (20 - Giocatori[i].Posizione) * 70.31, 0, 0);
+
+                if (Giocatori[i].Posizione >= 20 && Giocatori[i].Posizione < 30)
+                    Giocatori[i].Pedina.Margin = new Thickness(83.125 + (Giocatori[i].Posizione - 20) * 70.31, 73.125, 0, 0);
+
+                if (Giocatori[i].Posizione >= 30 && Giocatori[i].Posizione < 40)
+                    Giocatori[i].Pedina.Margin = new Thickness(828.435, 83.125 + (Giocatori[i].Posizione - 30) * 70.31, 0, 0);
+
+            }
+     
             if(Caselle[Giocatori[Turno].Posizione] is Proprieta)
             {
                 Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
@@ -114,6 +127,12 @@ namespace Monopoly
             Caselle[37] = new Proprieta(Brushes.Blue, "Viale Dei Giardini", 35000, false);
             Caselle[38] = new Speciali("Tassa di Lusso", Tipo_Speciali.Tassa, 10000);
             Caselle[39] = new Proprieta(Brushes.Blue, "Parco Della Vittoria", 40000, false);
+
+            for (int i = 0; i < Giocatori.Length; i++)
+            {
+                Ellipse Pedina = Giocatori[i].Pedina;
+                Griglia_Principale.Children.Add(Pedina);
+            }
         }
 
         private void PassaTurno(object sender, RoutedEventArgs e)
@@ -122,6 +141,8 @@ namespace Monopoly
             Giocatori[Turno].Posizione += R.Next(1, 7) + Dado;
             if (Giocatori[Turno].Posizione >= Caselle.Length)
                 Giocatori[Turno].Posizione = Giocatori[Turno].Posizione - 40;
+
+            MessageBox.Show(Giocatori[Turno].Posizione.ToString());
 
             Turno++;
             if (Turno == Giocatori.Length)

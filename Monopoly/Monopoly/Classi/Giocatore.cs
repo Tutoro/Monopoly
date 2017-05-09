@@ -29,6 +29,7 @@ namespace Monopoly.Classi
         public List<Casella> Proprieta; //! \var Proprieta \brief Lista di Caselle che contiene le Proprietà (normali e speciali) che il giocatore possiede
         public int Soldi; //! \var Soldi \brief Soldi che il giocatore ha a disposizione
         public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
+        public int InPrigione; //! \var InPrigione \brief Intero che conta i turni rimanenti nella InPrigione
 
         //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
         //! \param C \brief Colore del giocatore
@@ -40,11 +41,12 @@ namespace Monopoly.Classi
             Pedina.Stroke = Brushes.Black;
             Pedina.HorizontalAlignment = HorizontalAlignment.Left;
             Pedina.VerticalAlignment = VerticalAlignment.Top;
-            Pedina.Width = 10;
-            Pedina.Height = 10;
+            Pedina.Width = 20;
+            Pedina.Height = 20;
             Soldi = S;
             Proprieta = new List<Casella>();
             Posizione = 0;
+            InPrigione = 0;
         }
 
         //! \fn Compra \brief Compra una proprietà prestabilita
@@ -59,6 +61,9 @@ namespace Monopoly.Classi
 
             if (t.Costo > Soldi)
                 return false;
+
+            Soldi -= t.Costo;
+            t.Proprietario = this;
             Proprieta.Add(C);
             return true;
         }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="994.958" Width="1200" ResizeMode="NoResize">
     <Grid x:Name="Griglia_Principale">
-        <Image x:Name="Image_Campo" HorizontalAlignment="Left" Height="900" Margin="10,10,0,0" VerticalAlignment="Top" Width="900" Source="Immagini/Tabellone_monopoli.jpg"/>
+        <Image x:Name="Image_Campo" HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="800" Source="Immagini/Tabellone_monopoli.jpg"/>
         <Button x:Name="Button_Compra" Content="Compra / Ipoteca" HorizontalAlignment="Left" Margin="10,915,0,0" VerticalAlignment="Top" Width="300" Height="44" Click="CompraProprieta"/>
         <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="315,915,0,0" VerticalAlignment="Top" Width="290" Height="44"/>
         <Button x:Name="Button_Passa" Content="Passa" HorizontalAlignment="Left" Margin="610,915,0,0" VerticalAlignment="Top" Width="300" Height="44" Click="PassaTurno"/>

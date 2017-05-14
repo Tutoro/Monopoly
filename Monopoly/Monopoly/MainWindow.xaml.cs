@@ -33,7 +33,7 @@ namespace Monopoly
         int Turno; //! \var Turno \brief Variabile intera che contiene di quale giocatore è il turno
         bool Passato; //! \var Passato \brief Variabile booleana che controlla se un giocatore ha tirato i dadi
 
-        public MainWindow(Giocatore[] G)
+        public MainWindow(Giocatore[] G, int Turni)
         {
             InitializeComponent();
             Giocatori = G;
@@ -47,6 +47,8 @@ namespace Monopoly
         void AggiornaInterfaccia()
         {
             TextBox_SoldiUtenti.Text = "";
+            StackPanel_ProprietaUtente.Children.Clear();
+
             for (int i = 0; i < Giocatori.Length; i++)
             {
                 if (i == Turno)
@@ -71,6 +73,40 @@ namespace Monopoly
                 if (Giocatori[i].Posizione >= 30 && Giocatori[i].Posizione < 40)
                     Giocatori[i].Pedina.Margin = new Thickness(685 + (i + 1) * 22, 90 + (Giocatori[i].Posizione - 30) * 62.5, 0, 0);
 
+                int Altezza_Prossima = 0;
+
+                if (Giocatori[i].Proprieta.Count > 0)
+                {
+                    TextBlock R = new TextBlock();
+                    R.TextAlignment = TextAlignment.Left;
+                    R.HorizontalAlignment = HorizontalAlignment.Left;
+                    R.VerticalAlignment = VerticalAlignment.Top;
+                    R.Width = 200;
+                    R.Height = 44;
+                    R.Margin = new Thickness(0, Altezza_Prossima * i, 0, 0);
+                    R.Background = Brushes.White;
+                    R.Text = Environment.NewLine + "Proprietà Giocatore " + (i + 1) + ":";
+                    StackPanel_ProprietaUtente.Children.Add(R);
+
+                    foreach (Proprieta P in Giocatori[i].Proprieta)
+                    {
+                        R = new TextBlock();
+                        R.TextAlignment = TextAlignment.Center;
+                        R.HorizontalAlignment = HorizontalAlignment.Left;
+                        R.VerticalAlignment = VerticalAlignment.Top;
+                        R.Width = 200;
+                        R.Height = 22;
+                        R.Margin = new Thickness(0, Altezza_Prossima * i, 0, 0);
+                        Altezza_Prossima += 24;
+                        if (!P.Speciale)
+                            R.Background = P.Colore;
+                        else
+                            R.Background = Brushes.DarkGray;
+
+                        R.Text = P.Nome;
+                        StackPanel_ProprietaUtente.Children.Add(R);
+                    }
+                }
             }
             if (Passato)
             {
@@ -89,10 +125,20 @@ namespace Monopoly
                     Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
                     if (ProprietaCorrente.Proprietario == null)
                         Button_Compra.IsEnabled = true;
+
                     else if (ProprietaCorrente.Proprietario != Giocatori[Turno])
                     {
-                        ProprietaCorrente.Proprietario.Soldi += ProprietaCorrente.Costo / 4;
-                        Giocatori[Turno].Soldi -= ProprietaCorrente.Costo / 4;
+                        int Quantita = 0;
+                        if (!ProprietaCorrente.Speciale)
+                            Quantita = ProprietaCorrente.Costo / 4;
+
+                        else if (ProprietaCorrente.Colore == Brushes.Black)
+                                foreach (Proprieta P in ProprietaCorrente.Proprietario.Proprieta)
+                                    if (P.Speciale && P.Colore == Brushes.Black)
+                                        Quantita += ProprietaCorrente.Costo / 4;
+
+                        ProprietaCorrente.Proprietario.Soldi += Quantita;
+                        Giocatori[Turno].Soldi -= Quantita;
                     }
                 }
             }

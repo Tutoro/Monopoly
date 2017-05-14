@@ -39,7 +39,7 @@ namespace Monopoly
         {
             Controlla();
 
-            new MainWindow(Giocatori).Show();
+            new MainWindow(Giocatori, 0).Show();
             this.Close();
         }
 

@@ -37,22 +37,25 @@ namespace Monopoly
 
         private void InizioPartita(object sender, RoutedEventArgs e)
         {
+            Controlla();
+
             new MainWindow(Giocatori).Show();
             this.Close();
         }
 
         private void AggiornaGiocatori(object sender, KeyboardFocusChangedEventArgs e)
         {
+            Controlla();
+        }
+
+        void Controlla()
+        {
             try
             {
                 if (Convert.ToInt32(TextBox_NumeroGiocatori.Text) < 1)
-                {
                     TextBox_NumeroGiocatori.Text = "1";
-                }
                 if (Convert.ToInt32(TextBox_NumeroGiocatori.Text) > 4)
-                {
                     TextBox_NumeroGiocatori.Text = "4";
-                }
             }
             catch
             {
@@ -60,7 +63,7 @@ namespace Monopoly
             }
 
             Giocatori = new Giocatore[Convert.ToInt32(TextBox_NumeroGiocatori.Text)];
-            for(int i = 0; i < Giocatori.Length; i++)
+            for (int i = 0; i < Giocatori.Length; i++)
             {
                 Giocatori[i] = new Giocatore(Colori[i], 120000 / Giocatori.Length);
             }

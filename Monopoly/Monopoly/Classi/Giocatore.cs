@@ -30,6 +30,7 @@ namespace Monopoly.Classi
         public int Soldi; //! \var Soldi \brief Soldi che il giocatore ha a disposizione
         public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
         public int InPrigione; //! \var InPrigione \brief Intero che conta i turni rimanenti nella InPrigione
+        public bool InGioco; //! \var InGioco \brief Bool che controlla se il giocatore è in bancarotta o no
 
         //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
         //! \param C \brief Colore del giocatore
@@ -47,6 +48,7 @@ namespace Monopoly.Classi
             Proprieta = new List<Casella>();
             Posizione = 0;
             InPrigione = 0;
+            InGioco = true;
         }
 
         //! \fn Compra \brief Compra una proprietà prestabilita

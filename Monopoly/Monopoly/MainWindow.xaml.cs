@@ -56,7 +56,7 @@ namespace Monopoly
                 else
                     TextBox_SoldiUtenti.Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
 
-                if(Giocatori[i].InPrigione > 0)
+                if (Giocatori[i].InPrigione > 0)
                     TextBox_SoldiUtenti.Text += " (In Prigione per " + Giocatori[i].InPrigione + " turni)" + Environment.NewLine;
                 else
                     TextBox_SoldiUtenti.Text += Environment.NewLine;
@@ -83,7 +83,7 @@ namespace Monopoly
                     R.VerticalAlignment = VerticalAlignment.Top;
                     R.Width = 200;
                     R.Height = 44;
-                    R.Margin = new Thickness(0, Altezza_Prossima * i, 0, 0);
+                    R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
                     R.Background = Brushes.White;
                     R.Text = Environment.NewLine + "Proprietà Giocatore " + (i + 1) + ":";
                     StackPanel_ProprietaUtente.Children.Add(R);
@@ -96,8 +96,8 @@ namespace Monopoly
                         R.VerticalAlignment = VerticalAlignment.Top;
                         R.Width = 200;
                         R.Height = 22;
-                        R.Margin = new Thickness(0, Altezza_Prossima * i, 0, 0);
-                        Altezza_Prossima += 24;
+                        R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
+                        Altezza_Prossima += 2;
                         if (!P.Speciale)
                             R.Background = P.Colore;
                         else
@@ -111,39 +111,29 @@ namespace Monopoly
             if (Passato)
             {
                 Button_Scambia.IsEnabled = true;
-                Button_Compra.IsEnabled = false;
+                Button_CompraProprieta.IsEnabled = false;
+                Button_VendiProprieta.IsEnabled = true;
+                if (Giocatori[Turno].Proprieta.Count == 0)
+                    Button_VendiProprieta.IsEnabled = false;
                 Button_Passa.Content = "Avanza";
             }
             else
             {
                 Button_Scambia.IsEnabled = false;
-                Button_Compra.IsEnabled = false;
+                Button_CompraProprieta.IsEnabled = false;
+                Button_VendiProprieta.IsEnabled = true;
+                if (Giocatori[Turno].Proprieta.Count == 0)
+                    Button_VendiProprieta.IsEnabled = false;
                 Button_Passa.Content = "Passa";
 
                 if (Caselle[Giocatori[Turno].Posizione] is Proprieta)
                 {
                     Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
                     if (ProprietaCorrente.Proprietario == null)
-                        Button_Compra.IsEnabled = true;
-
-                    else if (ProprietaCorrente.Proprietario != Giocatori[Turno])
-                    {
-                        int Quantita = 0;
-                        if (!ProprietaCorrente.Speciale)
-                            Quantita = ProprietaCorrente.Costo / 4;
-
-                        else if (ProprietaCorrente.Colore == Brushes.Black)
-                                foreach (Proprieta P in ProprietaCorrente.Proprietario.Proprieta)
-                                    if (P.Speciale && P.Colore == Brushes.Black)
-                                        Quantita += ProprietaCorrente.Costo / 4;
-
-                        ProprietaCorrente.Proprietario.Soldi += Quantita;
-                        Giocatori[Turno].Soldi -= Quantita;
-                    }
+                        Button_CompraProprieta.IsEnabled = true;
                 }
             }
         }
-
         void CreaTabellone()
         {
             Caselle = new Casella[40];
@@ -232,17 +222,59 @@ namespace Monopoly
                                 break;
                         }
                     }
+                    if (Caselle[Giocatori[Turno].Posizione] is Proprieta)
+                    {
+                        Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
+                        if (ProprietaCorrente.Proprietario != null && ProprietaCorrente.Proprietario != Giocatori[Turno])
+                        {
+                            int Quantita = 0;
+                            if (!ProprietaCorrente.Speciale)
+                                Quantita = ProprietaCorrente.Costo / 4;
+
+                            else if (ProprietaCorrente.Colore == Brushes.Black)
+                                foreach (Proprieta P in ProprietaCorrente.Proprietario.Proprieta)
+                                    if (P.Speciale && P.Colore == Brushes.Black)
+                                        Quantita += ProprietaCorrente.Costo / 4;
+
+                            ProprietaCorrente.Proprietario.Soldi += Quantita;
+                            Giocatori[Turno].Soldi -= Quantita;
+                        }
+                    }
                 }
+
                 Passato = false;
             }
+
             else
             {
-                Turno++;
-                if (Turno == Giocatori.Length)
-                    Turno = 0;
-                Passato = true;
+                bool ForzaVendita = false;
+                if (Giocatori[Turno].Soldi < 0)
+                {
+                    if (Giocatori[Turno].Proprieta.Count > 0)
+                    {
+                        MessageBox.Show("Non puoi passare perchè andresti in bancarotta, vendi qualcosa!");
+                        ForzaVendita = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Il Giocatore " + (Turno + 1) + " è andato in bancarotta!");
+                        Giocatori[Turno].InGioco = false;
+                    }
+                }
 
-                MessageBox.Show("E' il turno del Giocatore " + (Turno + 1));
+                if (!ForzaVendita)
+                {
+                    do
+                    {
+                        Turno++;
+                        if (Turno == Giocatori.Length)
+                            Turno = 0;
+                    }
+                    while (!Giocatori[Turno].InGioco);
+
+                    Passato = true;
+                    MessageBox.Show("E' il turno del Giocatore " + (Turno + 1));
+                }
             }
 
             AggiornaInterfaccia();
@@ -250,8 +282,36 @@ namespace Monopoly
 
         private void CompraProprieta(object sender, RoutedEventArgs e)
         {
-            if (Giocatori[Turno].Compra(Caselle[Giocatori[Turno].Posizione]))
+            if (!Giocatori[Turno].Compra(Caselle[Giocatori[Turno].Posizione]))
                 MessageBox.Show("Non hai abbastanza soldi");
+
+            Menu_Azioni.Visibility = Visibility.Collapsed;
+
+            AggiornaInterfaccia();
+        }
+
+        private void ApriMenu(object sender, RoutedEventArgs e)
+        {
+            if (Menu_Azioni.Visibility == Visibility.Collapsed)
+                Menu_Azioni.Visibility = Visibility.Visible;
+            else if (Menu_Azioni.Visibility == Visibility.Visible)
+                Menu_Azioni.Visibility = Visibility.Collapsed;
+        }
+
+        private void IpotecaProprieta(object sender, RoutedEventArgs e)
+        {
+            WindowIpoteca I = new WindowIpoteca(Giocatori[Turno]);
+            I.Show();
+
+            AggiornaInterfaccia();
+        }
+
+        private void Trucchi(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.B)
+            {
+                Giocatori[Turno].Soldi = -10;
+            }
 
             AggiornaInterfaccia();
         }

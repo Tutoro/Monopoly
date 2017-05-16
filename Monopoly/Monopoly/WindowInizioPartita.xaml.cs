@@ -66,6 +66,7 @@ namespace Monopoly
             for (int i = 0; i < Giocatori.Length; i++)
             {
                 Giocatori[i] = new Giocatore(Colori[i], 120000 / Giocatori.Length);
+                Giocatori[i].SetPosizione(0, i, true);
             }
         }
     }

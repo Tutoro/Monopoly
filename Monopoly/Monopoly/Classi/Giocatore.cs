@@ -26,12 +26,11 @@ namespace Monopoly.Classi
     public class Giocatore
     {
         public Ellipse Pedina; //! \var Pedina \brief Pedina che rappresenta il giocatore sul campo
-        public List<Proprieta> Proprieta; //! \var Proprieta \brief Lista di Caselle che contiene le Proprietà (normali e speciali) che il giocatore possiede
+        public List<Casella> Proprieta; //! \var Proprieta \brief Lista di Caselle che contiene le Proprietà (normali e speciali) che il giocatore possiede
         public int Soldi; //! \var Soldi \brief Soldi che il giocatore ha a disposizione
         public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
         public int InPrigione; //! \var InPrigione \brief Intero che conta i turni rimanenti nella InPrigione
         public bool InGioco; //! \var InGioco \brief Bool che controlla se il giocatore è in bancarotta o no
-        public bool CartaPrigione; //! \var CartaPrigione \brief Bool che controlla se il giocatore ha la carta per uscire di prigione o no
 
         //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
         //! \param C \brief Colore del giocatore
@@ -46,29 +45,23 @@ namespace Monopoly.Classi
             Pedina.Width = 20;
             Pedina.Height = 20;
             Soldi = S;
-            Proprieta = new List<Proprieta>();
+            Proprieta = new List<Casella>();
             Posizione = 0;
             InPrigione = 0;
             InGioco = true;
-            CartaPrigione = false;
         }
 
         //! \fn Compra \brief Compra una proprietà prestabilita
         //! \param C \brief Casella da comprare
         //! \return bool \brief Ritorna falso se il giocatore non ha abbastanza soldi per acquistare o se non è una proprieta valida, altrimenti vero
-        public bool Compra(Casella C)
+        public bool Compra(Proprieta C)
         {
-            if (C is Speciali)
+            if (C.Costo > Soldi)
                 return false;
 
-            Proprieta t = (Proprieta)C;
-
-            if (t.Costo > Soldi)
-                return false;
-
-            Soldi -= t.Costo;
-            t.Proprietario = this;
-            Proprieta.Add(t);
+            Soldi -= C.Costo;
+            C.Proprietario = this;
+            Proprieta.Add(C);
             return true;
         }
 
@@ -80,10 +73,11 @@ namespace Monopoly.Classi
             if (C is Speciali || !Proprieta.Contains(C))
                 return false;
 
-            Proprieta.Remove((Proprieta)C);
+            Proprieta.Remove(C);
 
             Proprieta t = (Proprieta)C;
             Soldi += t.Costo / 2;
+            t.Proprietario = null;
             t.Ipotecato = true;
             return true;
         }
@@ -110,6 +104,33 @@ namespace Monopoly.Classi
                 }
             }
             return false;
+        }
+
+        //! \fn SetPosizione \brief Muove il giocatore sul campo del numero di posizioni specificate
+        //! \param P \brief Posizione da impostare
+        //! \param I \brief Indice del giocatore sul vettore principale
+        //! \param Relative \brief Decide se il movimento va aggiunto alla posizione totale oppure se va direttamente impostato
+        public void SetPosizione(int P, int I, bool Relative)
+        {
+            if (!Relative)
+                Posizione += P;
+            else
+                Posizione = P;
+
+            if (Posizione >= 40)
+                Posizione -= 40;
+
+            if (Posizione >= 0 && Posizione < 10)
+                Pedina.Margin = new Thickness(685 - (Posizione) * 62.5, 685 + (I + 1) * 22, 0, 0);
+
+            if (Posizione >= 10 && Posizione < 20)
+                Pedina.Margin = new Thickness(90 + (-I - 1) * 22, 685 - (Posizione - 10) * 62.5, 0, 0);
+
+            if (Posizione >= 20 && Posizione < 30)
+                Pedina.Margin = new Thickness(90 + (Posizione - 20) * 62.5, 90 + (-I - 1) * 22, 0, 0);
+
+            if (Posizione >= 30 && Posizione < 40)
+                Pedina.Margin = new Thickness(685 + (I + 1) * 22, 90 + (Posizione - 30) * 62.5, 0, 0);
         }
     }
 }

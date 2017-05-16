@@ -1,0 +1,20 @@
+﻿<Window x:Class="Monopoly.WindowStrutture"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Monopoly"
+        mc:Ignorable="d"
+        Title="WindowStrutture" Height="300" Width="319.327" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel x:Name="Stack_Proprieta" HorizontalAlignment="Left" Height="91" Margin="10,10,0,0" VerticalAlignment="Top" Width="155"/>
+        <TextBox x:Name="TextBox_NumeroCase" HorizontalAlignment="Left" Height="23" Margin="273,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27"/>
+        <Label Content="Numero case:" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox_NumeroAlberghi" HorizontalAlignment="Left" Height="23" Margin="273,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27"/>
+        <Label Content="Numero alberghi:" HorizontalAlignment="Left" Margin="170,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Guadagno/Costo totale:" HorizontalAlignment="Left" Margin="170,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox_Guadagno" HorizontalAlignment="Left" Height="23" Margin="174,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="133"/>
+        <Button Content="Conferma" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="75" Click="ConfermaStrutture"/>
+        <Button Content="Annulla" HorizontalAlignment="Left" Margin="90,101,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

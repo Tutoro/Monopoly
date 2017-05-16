@@ -315,5 +315,10 @@ namespace Monopoly
 
             AggiornaInterfaccia();
         }
+
+        private void Strutture(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

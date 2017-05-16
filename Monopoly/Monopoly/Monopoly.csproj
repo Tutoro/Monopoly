@@ -60,6 +60,9 @@
     <Compile Include="WindowIpoteca.xaml.cs">
       <DependentUpon>WindowIpoteca.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowStrutture.xaml.cs">
+      <DependentUpon>WindowStrutture.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowIpoteca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowStrutture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

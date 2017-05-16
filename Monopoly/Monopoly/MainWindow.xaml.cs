@@ -29,6 +29,8 @@ namespace Monopoly
         Giocatore[] Giocatori; //! \var Giocatori \brief Vettore che contiene i giocatori
         Casella[] Caselle; //! \var Caselle \brief Vettore che contiene tutte le caselle del tabellone
         Random R; //! \var R \brief Variabile Random
+        TextBlock[] TextBlockSoldi;
+        Carta[] Probabilita, Imprevisti;
 
         int Turno; //! \var Turno \brief Variabile intera che contiene di quale giocatore è il turno
         bool Passato; //! \var Passato \brief Variabile booleana che controlla se un giocatore ha tirato i dadi
@@ -38,6 +40,16 @@ namespace Monopoly
             InitializeComponent();
             Giocatori = G;
             R = new Random();
+            TextBlockSoldi = new TextBlock[4];
+            TextBlockSoldi[0] = TextBlock_SoldiG1;
+            TextBlockSoldi[1] = TextBlock_SoldiG2;
+            TextBlockSoldi[2] = TextBlock_SoldiG3;
+            TextBlockSoldi[3] = TextBlock_SoldiG4;
+            for (int i = 0; i < 4; i++)
+            {
+                if (i >= Giocatori.Length)
+                    TextBlockSoldi[i].Visibility = Visibility.Collapsed;
+            }
             CreaTabellone();
             Passato = true;
             Turno = 0;
@@ -46,32 +58,30 @@ namespace Monopoly
 
         void AggiornaInterfaccia()
         {
-            TextBox_SoldiUtenti.Text = "";
+            for (int i = 0; i < Giocatori.Length; i++)
+                TextBlockSoldi[i].Text = "";
+            
             StackPanel_ProprietaUtente.Children.Clear();
 
             for (int i = 0; i < Giocatori.Length; i++)
             {
                 if (i == Turno)
-                    TextBox_SoldiUtenti.Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
+                    TextBlockSoldi[i].Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
                 else
-                    TextBox_SoldiUtenti.Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
+                    TextBlockSoldi[i].Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
 
                 if (Giocatori[i].InPrigione > 0)
-                    TextBox_SoldiUtenti.Text += " (In Prigione per " + Giocatori[i].InPrigione + " turni)" + Environment.NewLine;
+                    TextBlockSoldi[i].Text += " (In Prigione per " + Giocatori[i].InPrigione + " turni)" + Environment.NewLine;
                 else
-                    TextBox_SoldiUtenti.Text += Environment.NewLine;
+                    TextBlockSoldi[i].Text += Environment.NewLine;
+                TextBlockSoldi[i].Background = Brushes.DarkGray;
+                if (i == Turno)
+                    TextBlockSoldi[i].Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
+                else
+                    TextBlockSoldi[i].Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
 
-                if (Giocatori[i].Posizione >= 0 && Giocatori[i].Posizione < 10)
-                    Giocatori[i].Pedina.Margin = new Thickness(685 - (Giocatori[i].Posizione) * 62.5, 685 + (i + 1) * 22, 0, 0);
-
-                if (Giocatori[i].Posizione >= 10 && Giocatori[i].Posizione < 20)
-                    Giocatori[i].Pedina.Margin = new Thickness(90 + (-i - 1) * 22, 685 - (Giocatori[i].Posizione - 10) * 62.5, 0, 0);
-
-                if (Giocatori[i].Posizione >= 20 && Giocatori[i].Posizione < 30)
-                    Giocatori[i].Pedina.Margin = new Thickness(90 + (Giocatori[i].Posizione - 20) * 62.5, 90 + (-i - 1) * 22, 0, 0);
-
-                if (Giocatori[i].Posizione >= 30 && Giocatori[i].Posizione < 40)
-                    Giocatori[i].Pedina.Margin = new Thickness(685 + (i + 1) * 22, 90 + (Giocatori[i].Posizione - 30) * 62.5, 0, 0);
+                if (Giocatori[i].InPrigione > 0)
+                    TextBlockSoldi[i].Text += " (In Prigione per " + Giocatori[i].InPrigione + " turni)";
 
                 int Altezza_Prossima = 0;
 
@@ -148,15 +158,15 @@ namespace Monopoly
             Caselle[8] = new Proprieta(Brushes.LightBlue, "Viale Monterosa", 10000, false);
             Caselle[9] = new Proprieta(Brushes.LightBlue, "Viale Vesuvio", 12000, false);
             Caselle[10] = new Speciali("InPrigione / Transito", Tipo_Speciali.Parcheggio, 0);
-            Caselle[11] = new Proprieta(Brushes.Orange, "Via Accademia", 14000, false);
+            Caselle[11] = new Proprieta(Brushes.Purple, "Via Accademia", 14000, false);
             Caselle[12] = new Proprieta(Brushes.Yellow, "Società Elettrica", 15000, true);
-            Caselle[13] = new Proprieta(Brushes.Orange, "Corso Ateneo", 14000, false);
-            Caselle[14] = new Proprieta(Brushes.Orange, "Piazza Università", 16000, false);
+            Caselle[13] = new Proprieta(Brushes.Purple, "Corso Ateneo", 14000, false);
+            Caselle[14] = new Proprieta(Brushes.Purple, "Piazza Università", 16000, false);
             Caselle[15] = new Proprieta(Brushes.Black, "Stazione Ovest", 20000, true);
-            Caselle[16] = new Proprieta(Brushes.Brown, "Via Verdi", 18000, false);
+            Caselle[16] = new Proprieta(Brushes.Orange, "Via Verdi", 18000, false);
             Caselle[17] = new Speciali("Probabilità", Tipo_Speciali.Probabilita, 0);
-            Caselle[18] = new Proprieta(Brushes.Brown, "Corso Raffaello", 18000, false);
-            Caselle[19] = new Proprieta(Brushes.Brown, "Piazza Dante", 20000, false);
+            Caselle[18] = new Proprieta(Brushes.Orange, "Corso Raffaello", 18000, false);
+            Caselle[19] = new Proprieta(Brushes.Orange, "Piazza Dante", 20000, false);
             Caselle[20] = new Speciali("Parcheggio", Tipo_Speciali.Parcheggio, 0);
             Caselle[21] = new Proprieta(Brushes.Red, "Via Marco Polo", 22000, false);
             Caselle[22] = new Speciali("Imprevisti", Tipo_Speciali.Imprevisti, 0);
@@ -184,29 +194,47 @@ namespace Monopoly
                 Griglia_Principale.Children.Add(Pedina);
             }
         }
+        void CreaCarte()
+        {
+            Probabilita = new Carta[16];
+            Probabilita[0] = new Carta(Tipo_Probabilita.SpostaCasella, 0, true);
+            Probabilita[1] = new Carta(Tipo_Probabilita.SpostaCasella, 30, false);
+            Probabilita[2] = new Carta(Tipo_Probabilita.Tassa, -10000);
+            Probabilita[3] = new Carta(Tipo_Probabilita.Tassa, 5000);
+            Probabilita[4] = new Carta(Tipo_Probabilita.Tassa, 1000);
+            Probabilita[5] = new Carta(Tipo_Probabilita.Tassa, 10000);
+            Probabilita[6] = new Carta(Tipo_Probabilita.TassaGlobale, 1000);
+            Probabilita[7] = new Carta(Tipo_Probabilita.Tassa, 2500);
+            Probabilita[8] = new Carta(Tipo_Probabilita.Tassa, 10000);
+            Probabilita[9] = new Carta(Tipo_Probabilita.Tassa, -5000);
+            Probabilita[10] = new Carta(Tipo_Probabilita.Tassa, -1000);
+            Probabilita[11] = new Carta(Tipo_Probabilita.Tassa, 2000);
+            Probabilita[12] = new Carta(Tipo_Probabilita.SpostaCasella, 1, false);
+            Probabilita[13] = new Carta(Tipo_Probabilita.Tassa, -5000);
+            Probabilita[14] = new Carta(Tipo_Probabilita.Tassa, 20000);
+            Probabilita[15] = new Carta(Tipo_Probabilita.UscitaPrigione);
+        }
 
         private void PassaTurno(object sender, RoutedEventArgs e)
         {
             if (Passato)
             {
                 int Risultato = R.Next(1, 7) + R.Next(1, 7);
-
                 MessageBox.Show(Risultato.ToString());
 
                 if (Giocatori[Turno].InPrigione > 0 && Risultato < 12)
                 {
                     if (Giocatori[Turno].InPrigione == 1)
                         Giocatori[Turno].Soldi -= 5000;
+
                     Giocatori[Turno].InPrigione--;
                 }
                 else
                 {
-                    Giocatori[Turno].Posizione += Risultato;
+                    Giocatori[Turno].SetPosizione(Risultato, Turno, false);
                     if (Giocatori[Turno].Posizione >= Caselle.Length)
-                    {
                         Giocatori[Turno].Soldi += 20000;
-                        Giocatori[Turno].Posizione -= 40;
-                    }
+
                     if (Caselle[Giocatori[Turno].Posizione] is Speciali)
                     {
                         Speciali Casella = (Speciali)Caselle[Giocatori[Turno].Posizione];
@@ -215,30 +243,18 @@ namespace Monopoly
                             case Tipo_Speciali.Tassa:
                                 Giocatori[Turno].Soldi -= Casella.Tassa_Costo;
                                 break;
+
                             case Tipo_Speciali.Prigione:
                                 MessageBox.Show("Vai in Prigione!");
                                 Giocatori[Turno].InPrigione = 3;
-                                Giocatori[Turno].Posizione = 10;
+                                Giocatori[Turno].SetPosizione(10, Turno, true);
                                 break;
                         }
                     }
                     if (Caselle[Giocatori[Turno].Posizione] is Proprieta)
                     {
                         Proprieta ProprietaCorrente = (Proprieta)Caselle[Giocatori[Turno].Posizione];
-                        if (ProprietaCorrente.Proprietario != null && ProprietaCorrente.Proprietario != Giocatori[Turno])
-                        {
-                            int Quantita = 0;
-                            if (!ProprietaCorrente.Speciale)
-                                Quantita = ProprietaCorrente.Costo / 4;
-
-                            else if (ProprietaCorrente.Colore == Brushes.Black)
-                                foreach (Proprieta P in ProprietaCorrente.Proprietario.Proprieta)
-                                    if (P.Speciale && P.Colore == Brushes.Black)
-                                        Quantita += ProprietaCorrente.Costo / 4;
-
-                            ProprietaCorrente.Proprietario.Soldi += Quantita;
-                            Giocatori[Turno].Soldi -= Quantita;
-                        }
+                        ProprietaCorrente.Rendita(Giocatori[Turno]);
                     }
                 }
 
@@ -276,49 +292,64 @@ namespace Monopoly
                     MessageBox.Show("E' il turno del Giocatore " + (Turno + 1));
                 }
             }
-
+            
+            Menu_Azioni.Visibility = Visibility.Collapsed;
             AggiornaInterfaccia();
         }
 
         private void CompraProprieta(object sender, RoutedEventArgs e)
         {
-            if (!Giocatori[Turno].Compra(Caselle[Giocatori[Turno].Posizione]))
-                MessageBox.Show("Non hai abbastanza soldi");
+            Proprieta T = (Proprieta)Caselle[Giocatori[Turno].Posizione];
+            MessageBoxResult Risposta = MessageBox.Show("Comprare '" + T.Nome + "' per L." + T.Costo + "?", "Conferma", MessageBoxButton.OKCancel);
+
+            if (Risposta.HasFlag(MessageBoxResult.OK))
+            {
+                if (!Giocatori[Turno].Compra(T))
+                    MessageBox.Show("Non hai abbastanza soldi");
+            }
 
             Menu_Azioni.Visibility = Visibility.Collapsed;
-
             AggiornaInterfaccia();
         }
 
         private void ApriMenu(object sender, RoutedEventArgs e)
         {
+            AggiornaMenu();
+        }
+
+        void AggiornaMenu()
+        {
             if (Menu_Azioni.Visibility == Visibility.Collapsed)
                 Menu_Azioni.Visibility = Visibility.Visible;
+
             else if (Menu_Azioni.Visibility == Visibility.Visible)
                 Menu_Azioni.Visibility = Visibility.Collapsed;
         }
 
         private void IpotecaProprieta(object sender, RoutedEventArgs e)
         {
-            WindowIpoteca I = new WindowIpoteca(Giocatori[Turno]);
+            WindowIpoteca I = new WindowIpoteca(Giocatori[Turno], this);
             I.Show();
+            this.IsEnabled = false;
+            //this.Hide();
+            I.Closed += ChiusuraIpoteca;
+            
+            Menu_Azioni.Visibility = Visibility.Collapsed;
+            AggiornaInterfaccia();
+        }
 
+        private void ChiusuraIpoteca(object sender, EventArgs e)
+        {
+            this.IsEnabled = true;
             AggiornaInterfaccia();
         }
 
         private void Trucchi(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.B)
-            {
                 Giocatori[Turno].Soldi = -10;
-            }
 
             AggiornaInterfaccia();
-        }
-
-        private void Strutture(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

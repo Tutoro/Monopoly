@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monopoly"
         mc:Ignorable="d"
-        Title="WindowIpoteca" Height="300" Width="212.605">
+        Title="WindowIpoteca" Height="300" Width="212.605" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True">
     <Grid>
-        <Button x:Name="Button_Conferma" Content="Conferma" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="Button_Annulla" Content="Annulla" HorizontalAlignment="Left" Margin="119,239,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Button_Conferma" Content="Conferma" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="75" Click="ConfermaIpoteca"/>
+        <Button x:Name="Button_Annulla" Content="Annulla" HorizontalAlignment="Left" Margin="119,239,0,0" VerticalAlignment="Top" Width="75" Click="Chiudi"/>
         <TextBox x:Name="TextBox_Guadagno" HorizontalAlignment="Left" Height="23" Margin="116,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
         <Label Content="Guadagno totale:
                " HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top" Width="106"/>

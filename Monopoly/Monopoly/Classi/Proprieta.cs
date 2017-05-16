@@ -35,6 +35,24 @@ namespace Monopoly.Classi
             Ipotecato = false;
             Strutture = new List<Struttura>();
         }
+
+        public void Rendita(Giocatore Pagante)
+        {
+            if (Proprietario != null && Proprietario != Pagante)
+            {
+                int Quantita = 0;
+                if (!Speciale)
+                    Quantita = Costo / 4;
+
+                else if (Colore == Brushes.Black)
+                    foreach (Proprieta P in Proprietario.Proprieta)
+                        if (P.Speciale && P.Colore == Brushes.Black)
+                            Quantita += Costo / 4;
+
+                Proprietario.Soldi += Quantita;
+                Pagante.Soldi -= Quantita;
+            }
+        }
     }
 
     public class Speciali : Casella

@@ -16,32 +16,35 @@ using System.Windows.Shapes;
 namespace Monopoly.Classi
 {
 
-    enum Tipo_Speciali
+    public enum Tipo_Speciali
     { Imprevisti, Parcheggio, Prigione, Probabilita, Tassa };
 
-    class Proprieta : Casella
+    public class Proprieta : Casella
     {
         public int Costo;
         public bool Ipotecato;
-        public List<Struttura> s = new List<Struttura>();
-        public Proprieta(string N, int C, Brush Col) : base(Col, N)
+        public bool Speciale;
+        public List<Struttura> Strutture;
+        public Giocatore Proprietario;
+
+        public Proprieta(Brush Col, string N, int C, bool S) : base(Col, N)
         {
             Costo = C;
+            Speciale = S;
+            Proprietario = null;
+            Ipotecato = false;
+            Strutture = new List<Struttura>();
         }
     }
 
-    class Speciali : Casella
+    public class Speciali : Casella
     {
-
-    }
-
-    class Proprieta_Speciali : Casella
-    {
-        public int Costo;
-        public bool Ipotecato;
-        public Proprieta_Speciali(string N, int C, Brush Col) : base(Col, N)
+        public int Tassa_Costo;
+        public Tipo_Speciali Tipo;
+        public Speciali(string N, Tipo_Speciali T, int C) : base(Brushes.Black, N)
         {
-            Costo = C;
+            Tassa_Costo = C;
+            Tipo = T;
         }
     }
 }

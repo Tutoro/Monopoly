@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace Monopoly.Classi
 {
-    class Struttura : Image
+    public class Struttura : Image
     {
         public bool Tipo;
         public Struttura(bool T)

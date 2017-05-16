@@ -5,14 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monopoly"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="886.265" Width="1094.094" ResizeMode="NoResize" KeyDown="Trucchi">
     <Grid x:Name="Griglia_Principale">
-        <Image x:Name="Image_Campo" HorizontalAlignment="Left" Height="500" Margin="10,10,0,0" VerticalAlignment="Top" Width="500"/>
-        <Button x:Name="Button_Compra" Content="Compra / Ipoteca" HorizontalAlignment="Left" Margin="10,515,0,0" VerticalAlignment="Top" Width="160" Height="44"/>
-        <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="175,515,0,0" VerticalAlignment="Top" Width="170" Height="44"/>
-        <Button x:Name="Button_Passa" Content="Passa" HorizontalAlignment="Left" Margin="350,515,0,0" VerticalAlignment="Top" Width="160" Height="44"/>
-        <TextBox x:Name="TextBox_SoldiUtenti" HorizontalAlignment="Left" Height="100" Margin="515,459,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="267"/>
-        <StackPanel x:Name="StackPanel_ProprietaUtente" HorizontalAlignment="Left" Height="444" Margin="515,10,0,0" VerticalAlignment="Top" Width="267"/>
+        <Image x:Name="Image_Campo" HorizontalAlignment="Left" Height="800" VerticalAlignment="Top" Width="800" Source="Immagini/Tabellone_monopoli.jpg"/>
+        <Button x:Name="Button_Azioni" Content="Azioni" HorizontalAlignment="Left" Margin="0,805,0,0" VerticalAlignment="Top" Width="260" Height="44" Click="ApriMenu"/>
+        <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="265,805,0,0" VerticalAlignment="Top" Width="270" Height="44"/>
+        <Button x:Name="Button_Passa" Content="Passa" HorizontalAlignment="Left" Margin="540,805,0,0" VerticalAlignment="Top" Width="260" Height="44" Click="PassaTurno"/>
+        <StackPanel x:Name="StackPanel_ProprietaUtente" HorizontalAlignment="Left" Height="744" Margin="805,0,0,0" VerticalAlignment="Top" Width="267"/>
+        <Menu x:Name="Menu_Azioni" HorizontalAlignment="Left" Height="66" Margin="0,734,0,0" VerticalAlignment="Top" Width="146" Visibility="Collapsed">
+            <Button x:Name="Button_CompraStrutture" Content="Compra/Vendi Strutture" Width="130"/>
+            <Button x:Name="Button_CompraProprieta" Content="Compra Proprietà" Click="CompraProprieta" Width="130"/>
+            <Button x:Name="Button_VendiProprieta" Content="Ipoteca Proprietà" Width="130" Click="IpotecaProprieta"/>
+        </Menu>
+        <TextBlock x:Name="TextBlock_SoldiG1" HorizontalAlignment="Left" Margin="805,762,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.129,-0.729" Width="273" Foreground="Black"/>
+        <TextBlock x:Name="TextBlock_SoldiG2" HorizontalAlignment="Left" Margin="805,778,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.129,-0.729" Width="273" Foreground="Beige"/>
+        <TextBlock x:Name="TextBlock_SoldiG3" HorizontalAlignment="Left" Margin="805,794,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.129,-0.729" Width="273" Foreground="Aquamarine"/>
+        <TextBlock x:Name="TextBlock_SoldiG4" HorizontalAlignment="Left" Margin="805,810,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-0.129,-0.729" Width="273" Foreground="Crimson"/>
 
     </Grid>
 </Window>

@@ -31,6 +31,7 @@ namespace Monopoly.Classi
         public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
         public int InPrigione; //! \var InPrigione \brief Intero che conta i turni rimanenti nella InPrigione
         public bool InGioco; //! \var InGioco \brief Bool che controlla se il giocatore è in bancarotta o no
+        public int BigliettoPrigione; //! \var BigliettoPrigione \brief Intero che controlla quanti biglietti ha il giocatore per uscire di prigione
 
         //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
         //! \param C \brief Colore del giocatore

@@ -94,17 +94,13 @@ namespace Monopoly
                     R.Width = 200;
                     R.Height = 44;
                     R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
-                    R.Background = Brushes.White;
                     R.Text = Environment.NewLine + "Proprietà Giocatore " + (i + 1) + ":";
+                    BrushConverter B = new BrushConverter();
+                    R.Background = (Brush)B.ConvertFromString("#FFCDE7CE");
                     StackPanel_ProprietaUtente.Children.Add(R);
 
                     foreach (Proprieta P in Giocatori[i].Proprieta)
                     {
-                        R = new TextBlock();
-                        R.TextAlignment = TextAlignment.Center;
-                        R.HorizontalAlignment = HorizontalAlignment.Left;
-                        R.VerticalAlignment = VerticalAlignment.Top;
-                        R.Width = 200;
                         R.Height = 22;
                         R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
                         Altezza_Prossima += 2;
@@ -114,6 +110,17 @@ namespace Monopoly
                             R.Background = Brushes.DarkGray;
 
                         R.Text = P.Nome;
+                        StackPanel_ProprietaUtente.Children.Add(R);
+                    }
+
+                    for(int c = 0; c < Giocatori[i].BigliettoPrigione; c++)
+                    {
+                        R.Height = 22;
+                        R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
+                        Altezza_Prossima += 2;
+                        R.Background = Brushes.Black;
+                        R.Foreground = Brushes.White;
+                        R.Text = "Uscita gratis di Prigione!";
                         StackPanel_ProprietaUtente.Children.Add(R);
                     }
                 }
@@ -245,9 +252,53 @@ namespace Monopoly
                                 break;
 
                             case Tipo_Speciali.Prigione:
-                                MessageBox.Show("Vai in Prigione!");
-                                Giocatori[Turno].InPrigione = 3;
-                                Giocatori[Turno].SetPosizione(10, Turno, true);
+                                if (Giocatori[Turno].BigliettoPrigione > 0)
+                                {
+                                    MessageBox.Show("Usi il biglietto per saltare la prigione");
+                                    Giocatori[Turno].BigliettoPrigione--;
+                                    Giocatori[Turno].SetPosizione(10, Turno, true);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Vai in Prigione!");
+                                    Giocatori[Turno].InPrigione = 3;
+                                    Giocatori[Turno].SetPosizione(10, Turno, true);
+                                }
+                                break;
+
+                            case Tipo_Speciali.Probabilita:
+                                switch(Probabilita[0].Tipo)
+                                {
+                                    case Tipo_Probabilita.SpostaCasella:
+                                        Giocatori[Turno].SetPosizione(Probabilita[0].Spostamento, Turno, true);
+                                        Carta.Scorri(ref Probabilita);
+                                        break;
+
+                                    case Tipo_Probabilita.SpostaNumero:
+                                        Giocatori[Turno].SetPosizione(Probabilita[0].Spostamento, Turno, false);
+                                        Carta.Scorri(ref Probabilita);
+                                        break;
+
+                                    case Tipo_Probabilita.Tassa:
+                                        Giocatori[Turno].Soldi += Probabilita[0].Pagamento;
+                                        Carta.Scorri(ref Probabilita);
+                                        break;
+
+                                    case Tipo_Probabilita.TassaGlobale:
+                                        foreach(Giocatore G in Giocatori)
+                                            if (G != Giocatori[Turno])
+                                                G.Soldi -= Probabilita[0].Pagamento;
+                                            else
+                                                G.Soldi += Probabilita[0].Pagamento * (Giocatori.Length - 1);
+                                        Carta.Scorri(ref Probabilita);
+                                        break;
+
+                                    case Tipo_Probabilita.UscitaPrigione:
+                                        Giocatori[Turno].BigliettoPrigione++;
+                                        Carta.RimuoviPrigione(ref Probabilita);
+                                        Carta.Scorri(ref Probabilita);
+                                        break;
+                                }
                                 break;
                         }
                     }
@@ -348,6 +399,24 @@ namespace Monopoly
         {
             if (e.Key == Key.B)
                 Giocatori[Turno].Soldi = -10;
+            if(e.Key == Key.P)
+            {
+                Carta[] T = new Carta[Probabilita.Length - 1];
+                Giocatori[Turno].BigliettoPrigione++;
+                bool Avanti = false; ;
+                for(int i = 0; i < Probabilita.Length; i++)
+                {
+                    if (Avanti)
+                        T[i - 1] = Probabilita[i];
+                    else
+                        T[i] = Probabilita[i];
+
+                    if(Probabilita[i].Tipo == Tipo_Probabilita.UscitaPrigione)
+                        Avanti = true;
+                }
+
+                Probabilita = T;
+            }
 
             AggiornaInterfaccia();
         }

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace Monopoly.Classi
 {
     public enum Tipo_Probabilita
-    { SpostaCasella, SpostaNumero, Tassa, TassaGlobale, UscitaPrigione, TassaCaseAlberghi };
+    { SpostaCasella, SpostaNumero, Tassa, TassaGlobale, UscitaPrigione, TassaCaseAlberghi};
 
     class Carta
     {
         public Tipo_Probabilita Tipo;
         public int Pagamento;
         public int Spostamento;
-        public bool Via;
-        public int PagaC; // Costo per ogni casa
-        public int PagaA; // Costo per ogni albergo
+        //public bool Via;
+        public int PagaC; // Costo case
+        public int PagaA; // Costo alberghi
         public string Messaggio;
 
         public Carta(Tipo_Probabilita T, int P, string M)
@@ -25,20 +25,12 @@ namespace Monopoly.Classi
             Pagamento = P;
             Messaggio = M;
         }
-        public Carta(Tipo_Probabilita T, int S, bool V, string M)
-        {
-            Tipo = T;
-            Spostamento = S;
-            Via = V;
-            Messaggio = M;
-        }
         public Carta(Tipo_Probabilita T, string M)
         {
             Tipo = T;
             Messaggio = M;
         }
-
-        public Carta(Tipo_Probabilita T, int C, int A, string M)
+        public Carta(Tipo_Probabilita T,int C, int A, string M)
         {
             Tipo = T;
             PagaC = C;
@@ -73,5 +65,6 @@ namespace Monopoly.Classi
             T[T.Length - 1] = new Carta(Tipo_Probabilita.UscitaPrigione, "");
             L = T;
         }
+
     }
 }

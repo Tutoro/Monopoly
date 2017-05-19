@@ -32,33 +32,5 @@ namespace Monopoly.Classi
             Tipo = T;
         }
 
-        public static void Scorri(ref Carta[] L)
-        {
-            Carta T = L[0];
-            for (int i = 1; i < L.Length; i++)
-                L[i - 1] = L[i];
-
-            L[L.Length - 1] = T;
-        }
-
-        public static void RimuoviPrigione(ref Carta[] L)
-        {
-            Carta[] T = new Carta[L.Length - 1];
-            for (int i = 1; i < L.Length; i++)
-                    T[i - 1] = L[i];
-
-            L = T;
-        }
-
-        public static void AggiungiPrigione(ref Carta[] L)
-        {
-            Carta[] T = new Carta[L.Length + 1];
-            for (int i = 0; i < L.Length; i++)
-                T[i] = L[i];
-
-            T[T.Length - 1] = new Carta(Tipo_Probabilita.UscitaPrigione);
-            L = T;
-        }
-
     }
 }

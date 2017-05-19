@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 /*!
 \author    Arduini Alberto
-\version   0.1b
+\version   0.4
 \date      02/05/2017
 */
 
@@ -117,7 +117,10 @@ namespace Monopoly.Classi
                 Posizione = P;
 
             if (Posizione >= 40)
+            {
                 Posizione -= 40;
+                Soldi += 20000;
+            }
 
             if (Posizione >= 0 && Posizione < 10)
                 Pedina.Margin = new Thickness(685 - (Posizione) * 62.5, 685 + (I + 1) * 22, 0, 0);

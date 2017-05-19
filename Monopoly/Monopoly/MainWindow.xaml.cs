@@ -71,16 +71,6 @@ namespace Monopoly
                     TextBlockSoldi[i].Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
 
                 if (Giocatori[i].InPrigione > 0)
-                    TextBlockSoldi[i].Text += " (In Prigione per " + Giocatori[i].InPrigione + " turni)" + Environment.NewLine;
-                else
-                    TextBlockSoldi[i].Text += Environment.NewLine;
-                TextBlockSoldi[i].Background = Brushes.DarkGray;
-                if (i == Turno)
-                    TextBlockSoldi[i].Text += "»Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
-                else
-                    TextBlockSoldi[i].Text += "─Giocatore " + (i + 1) + " |" + Giocatori[i].Soldi;
-
-                if (Giocatori[i].InPrigione > 0)
                     TextBlockSoldi[i].Text += " (In Prigione per " + Giocatori[i].InPrigione + " turni)";
 
                 int Altezza_Prossima = 0;
@@ -101,16 +91,7 @@ namespace Monopoly
 
                     foreach (Proprieta P in Giocatori[i].Proprieta)
                     {
-                        R.Height = 22;
-                        R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
-                        Altezza_Prossima += 2;
-                        if (!P.Speciale)
-                            R.Background = P.Colore;
-                        else
-                            R.Background = Brushes.DarkGray;
-
-                        R.Text = P.Nome;
-                        StackPanel_ProprietaUtente.Children.Add(R);
+                        StackPanel_ProprietaUtente.Children.Add(P.GetInterfaccia(ref Altezza_Prossima));
                     }
 
                     for(int c = 0; c < Giocatori[i].BigliettoPrigione; c++)
@@ -239,8 +220,6 @@ namespace Monopoly
                 else
                 {
                     Giocatori[Turno].SetPosizione(Risultato, Turno, false);
-                    if (Giocatori[Turno].Posizione >= Caselle.Length)
-                        Giocatori[Turno].Soldi += 20000;
 
                     if (Caselle[Giocatori[Turno].Posizione] is Speciali)
                     {

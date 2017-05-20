@@ -22,7 +22,7 @@ namespace Monopoly
     {
         Giocatore[] Giocatori;
         Brush[] Colori;
-
+        int Turni = 0;
         public WindowInizioPartita()
         {
             InitializeComponent();
@@ -35,24 +35,39 @@ namespace Monopoly
             Colori[3] = Brushes.Crimson;
         }
 
-        private void InizioPartita(object sender, RoutedEventArgs e)
+        private void InizioPartita(object sender, MouseButtonEventArgs e)
         {
-            Controlla();
+            if (checkBox_Finiti.IsChecked == false && checkBox_Infiniti.IsChecked == false)
+            {
+                MessageBox.Show("Devi ancora scegliere il numero di turni!");
+            }
+            else if(checkBox_Finiti.IsChecked == true && textBox_ScegliTurni.Text=="")
+            {
+                MessageBox.Show("Devi ancora inserire il numero di turni!");
+            }
+            else
+            {
+                ControllaGiocatori();
+                if (checkBox_Finiti.IsChecked == true)
+                    Turni = Convert.ToInt32(textBox_ScegliTurni.Text);
+                else
+                    Turni = 0;
 
-            new MainWindow(Giocatori, 0).Show();
-            this.Close();
+                new MainWindow(Giocatori, Turni).Show();
+                this.Close();
+            }
         }
 
         private void AggiornaGiocatori(object sender, KeyboardFocusChangedEventArgs e)
         {
-            Controlla();
+            ControllaGiocatori();
         }
 
-        void Controlla()
+        void ControllaGiocatori()
         {
             try
             {
-                if (Convert.ToInt32(TextBox_NumeroGiocatori.Text) < 1)
+                if (Convert.ToInt32(TextBox_NumeroGiocatori.Text) < 2)
                     TextBox_NumeroGiocatori.Text = "1";
                 if (Convert.ToInt32(TextBox_NumeroGiocatori.Text) > 4)
                     TextBox_NumeroGiocatori.Text = "4";
@@ -65,9 +80,32 @@ namespace Monopoly
             Giocatori = new Giocatore[Convert.ToInt32(TextBox_NumeroGiocatori.Text)];
             for (int i = 0; i < Giocatori.Length; i++)
             {
-                Giocatori[i] = new Giocatore(Colori[i], 120000 / Giocatori.Length);
-                Giocatori[i].SetPosizione(0, i, true);
+                Giocatori[i] = new Giocatore(Colori[i], 240000 / Giocatori.Length);
             }
+        }
+        private void check_TurniInfiniti(object sender, RoutedEventArgs e)
+        {
+            canvas_turni.Visibility = Visibility.Collapsed;
+            checkBox_Finiti.IsChecked = false;
+        }
+        private void check_TurniFiniti(object sender, RoutedEventArgs e)
+        {
+            if (!(bool)checkBox_Finiti.IsChecked)
+            {
+                canvas_turni.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                canvas_turni.Visibility = Visibility.Visible;
+            }
+            checkBox_Infiniti.IsChecked = false;
+        }
+
+        private void Cambio_Colore(object sender, MouseEventArgs e)
+        {
+            Button_Conferma.Background = null;
+            BrushConverter B = new BrushConverter();
+            Button_Conferma.Foreground = (Brush)B.ConvertFromString("#FFE41F1F");
         }
     }
 }

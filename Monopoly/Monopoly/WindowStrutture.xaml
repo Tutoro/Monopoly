@@ -5,16 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monopoly"
         mc:Ignorable="d"
-        Title="WindowStrutture" Height="300" Width="319.327" ResizeMode="NoResize">
+        Title="WindowStrutture" Height="91.428" Width="233.333" ResizeMode="NoResize">
     <Grid>
-        <StackPanel x:Name="Stack_Proprieta" HorizontalAlignment="Left" Height="91" Margin="10,10,0,0" VerticalAlignment="Top" Width="155"/>
-        <TextBox x:Name="TextBox_NumeroCase" HorizontalAlignment="Left" Height="23" Margin="273,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27"/>
-        <Label Content="Numero case:" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox_NumeroAlberghi" HorizontalAlignment="Left" Height="23" Margin="273,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="27"/>
-        <Label Content="Numero alberghi:" HorizontalAlignment="Left" Margin="170,41,0,0" VerticalAlignment="Top"/>
-        <Label Content="Guadagno/Costo totale:" HorizontalAlignment="Left" Margin="170,72,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox_Guadagno" HorizontalAlignment="Left" Height="23" Margin="174,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="133"/>
-        <Button Content="Conferma" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="75" Click="ConfermaStrutture"/>
-        <Button Content="Annulla" HorizontalAlignment="Left" Margin="90,101,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Button_Aggiungi" Content="+" HorizontalAlignment="Left" Margin="197,10,0,0" VerticalAlignment="Top" Width="22" Click="ConfermaStrutture"/>
+        <StackPanel x:Name="Stack_Proprieta" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" VerticalAlignment="Top" Width="182"/>
+        <Button x:Name="Button_Rimuovi" Content="-" HorizontalAlignment="Left" Margin="197,35,0,0" VerticalAlignment="Top" Width="22" Click="RimuoviProprieta"/>
+
     </Grid>
 </Window>

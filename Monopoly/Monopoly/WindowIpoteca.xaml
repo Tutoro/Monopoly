@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="Button_Conferma" Content="Conferma" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="75" Click="ConfermaIpoteca"/>
         <Button x:Name="Button_Annulla" Content="Annulla" HorizontalAlignment="Left" Margin="119,239,0,0" VerticalAlignment="Top" Width="75" Click="Chiudi"/>
-        <TextBox x:Name="TextBox_Guadagno" HorizontalAlignment="Left" Height="23" Margin="116,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
+        <TextBox x:Name="TextBox_Guadagno" HorizontalAlignment="Left" Height="23" Margin="116,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" IsReadOnly="True" Text="0"/>
         <Label Content="Guadagno totale:
                " HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top" Width="106"/>
         <StackPanel x:Name="Stack_Proprieta" HorizontalAlignment="Left" Height="197" Margin="10,10,0,0" VerticalAlignment="Top" Width="185"/>

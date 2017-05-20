@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 /*!
 \author    Arduini Alberto
-\version   0.1b
+\version   0.4
 \date      02/05/2017
 */
 
@@ -31,6 +31,7 @@ namespace Monopoly.Classi
         public int Posizione; //! \var Posizione \brief Intero che salva la posizione sul tabellone del giocatore
         public int InPrigione; //! \var InPrigione \brief Intero che conta i turni rimanenti nella InPrigione
         public bool InGioco; //! \var InGioco \brief Bool che controlla se il giocatore è in bancarotta o no
+        public int BigliettoPrigione; //! \var BigliettoPrigione \brief Intero che controlla quanti biglietti ha il giocatore per uscire di prigione
 
         //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
         //! \param C \brief Colore del giocatore
@@ -46,7 +47,6 @@ namespace Monopoly.Classi
             Pedina.Height = 20;
             Soldi = S;
             Proprieta = new List<Casella>();
-            Posizione = 0;
             InPrigione = 0;
             InGioco = true;
         }
@@ -116,7 +116,10 @@ namespace Monopoly.Classi
                 Posizione = P;
 
             if (Posizione >= 40)
+            {
                 Posizione -= 40;
+                Soldi += 20000;
+            }
 
             if (Posizione >= 0 && Posizione < 10)
                 Pedina.Margin = new Thickness(685 - (Posizione) * 62.5, 685 + (I + 1) * 22, 0, 0);

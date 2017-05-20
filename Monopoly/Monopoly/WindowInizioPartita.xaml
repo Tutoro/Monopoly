@@ -5,11 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monopoly"
         mc:Ignorable="d"
-        Title="WindowInizioPartita" Height="300" Width="300">
+        Title="WindowInizioPartita" Height="306" Width="886" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
     <Grid>
-        <TextBox x:Name="TextBox_NumeroGiocatori" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" LostKeyboardFocus="AggiornaGiocatori"/>
-        <Label Content="Numero Giocatori:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="23"/>
-        <Button x:Name="Button_Conferma" Content="Inizia" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="75" Click="InizioPartita"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="Immagini/Monopoly_logo.png"/>
+        </Grid.Background>
+        <TextBox x:Name="TextBox_NumeroGiocatori" HorizontalAlignment="Left" Height="25" Margin="575,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="253" LostKeyboardFocus="AggiornaGiocatori" BorderBrush="#FFE2001A" BorderThickness="1"/>
+        <Label Content="Decidi il numero di giocatori:" HorizontalAlignment="Left" Margin="575,10,0,0" VerticalAlignment="Top" Height="30" Width="253" Background="{x:Null}" BorderBrush="#FFE2001A" BorderThickness="2"/>
+        <Label x:Name="label" Content="Decidi Il numero di turni da giocare:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FFE2001A" BorderThickness="2" Width="331"/>
+        <CheckBox x:Name="checkBox_Infiniti" Content="Desidero avere turni infiniti" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Checked="check_TurniInfiniti"/>
+        <CheckBox x:Name="checkBox_Finiti" Content="Desidero decidere il numero di turni" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Checked="check_TurniFiniti" Click="check_TurniFiniti" RenderTransformOrigin="0.695,-0.083"/>
+        <Canvas x:Name="canvas_turni" HorizontalAlignment="Left" Height="25" Margin="241,45,0,0" VerticalAlignment="Top" Width="100" Visibility="Collapsed">
+            <Label x:Name="lbl_turni" Content="N. turni:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="54"/>
+            <TextBox x:Name="textBox_ScegliTurni" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Canvas.Left="50" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFE2001A"/>
+        </Canvas>
+        <Label x:Name="Button_Conferma" Content="INIZIA!" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="354,222,0,0" VerticalAlignment="Top" Width="169" Height="36" Background="#FFE41F1F" BorderBrush="#FFE61B1B" Foreground="White" MouseEnter="Cambio_Colore" MouseDown="InizioPartita"/>
 
     </Grid>
 </Window>

@@ -4,25 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-C:\Users\Alberto\Documents\GitHub\Monopoly\Monopoly\Monopoly\obj\Debug\
-=======
-C:\Users\PC02\Desktop\Monopoly-master\Monopoly\Monopoly\obj\Debug\
->>>>>>> 04ed53d661ae175323e631d5b2be5f58294423e1
+C:\Users\Alberto\Downloads\Monopoly-master\Monopoly\Monopoly\obj\Debug\
 Monopoly
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-C:\Users\Alberto\Documents\GitHub\Monopoly\Monopoly\Monopoly\App.xaml
-=======
-C:\Users\PC02\Desktop\Monopoly-master\Monopoly\Monopoly\App.xaml
->>>>>>> 04ed53d661ae175323e631d5b2be5f58294423e1
-3-1020914468
+C:\Users\Alberto\Downloads\Monopoly-master\Monopoly\Monopoly\App.xaml
+4-407953662
 
-111458275370
+13581369113
 13738642453
-MainWindow.xaml;WindowInizioPartita.xaml;WindowIpoteca.xaml;
+MainWindow.xaml;WindowInizioPartita.xaml;WindowIpoteca.xaml;WindowStrutture.xaml;
 
 False
 

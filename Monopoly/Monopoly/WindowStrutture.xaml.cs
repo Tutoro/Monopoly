@@ -21,52 +21,121 @@ namespace Monopoly
     public partial class WindowStrutture : Window
     {
         Giocatore Corrente;
-        List<Proprieta> Attive, Temporanee;
         Proprieta Selezionata;
-        public WindowStrutture(Giocatore G, Proprieta Pr)
+        MainWindow Principale;
+        List<Proprieta> Temp;
+
+        public WindowStrutture(Giocatore G, MainWindow Pr)
         {
+            IsVisibleChanged += CreaLista;
             InitializeComponent();
             Corrente = G;
-            int i = 0;
-            Attive = new List<Proprieta>();
-            Temporanee = new List<Proprieta>();
-            foreach (Proprieta P in Corrente.Proprieta)
+            Principale = Pr;
+            Button_Aggiungi.IsEnabled = false;
+            Button_Rimuovi.IsEnabled = false;
+        }
+
+        private void CreaLista(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Casella CC = Principale.Caselle[Corrente.Posizione];
+            Temp = new List<Proprieta>();
+            for (int i = 0; i < Corrente.Proprieta.Count; i++)
             {
-                if (P.Colore == Pr.Colore)
+                if (Corrente.Proprieta[i].Colore == CC.Colore)
+                    Temp.Add((Proprieta)Corrente.Proprieta[i]);
+            }
+
+            if (Temp.Count == 3 || (Temp.Count == 2 && (CC.Colore == Brushes.Brown || CC.Colore == Brushes.Blue)))
+            {
+                foreach (Proprieta P in Temp)
                 {
-                    Attive[i] = P;
-                    Temporanee[i] = new Proprieta(Brushes.Black, "", 0, false);
                     CheckBox C = new CheckBox();
-                    C.Content = P.Nome;
-                    C.Background = P.Colore;
-                    C.Width = 200;
-                    C.Height = 10;
                     C.HorizontalAlignment = HorizontalAlignment.Left;
                     C.VerticalAlignment = VerticalAlignment.Top;
-                    C.Checked += CambioSelezione;
+                    C.Width = 200;
+                    C.Height = 20;
+                    C.Checked += CambiaSelezione;
+                    C.Unchecked += CambiaSelezione;
+                    C.Content = P.Nome + " (" + P.Strutture.Count + ")";
+                    C.Background = P.Colore;
                     Stack_Proprieta.Children.Add(C);
-                    i++;
                 }
+            }
+            else if(Visibility == Visibility.Visible)
+            {
+                MessageBox.Show("Non hai proprietà adatte alla costruzione di strutture!");
+                this.Visibility = Visibility.Collapsed;
+                this.Close();
             }
         }
 
-        private void CambioSelezione(object sender, RoutedEventArgs e)
+        private void CambiaSelezione(object sender, RoutedEventArgs e)
         {
-            CheckBox C = (CheckBox)sender;
-            foreach(CheckBox Ch in Stack_Proprieta.Children)
-                if (Ch != C)
-                    Ch.IsChecked = false;
+            CheckBox S = (CheckBox)sender;
+            foreach (CheckBox C in Stack_Proprieta.Children)
+                if (C != S && (bool)S.IsChecked)
+                    C.IsChecked = false;
 
-            Proprieta P = (Proprieta)Temporanee[Stack_Proprieta.Children.IndexOf(C)];
-            if ((bool)C.IsChecked)
-                Selezionata = P;
+            if ((bool)S.IsChecked)
+            {
+                Button_Aggiungi.IsEnabled = true;
+                Button_Rimuovi.IsEnabled = true;
+            }
+            else
+            {
+                Button_Aggiungi.IsEnabled = false;
+                Button_Rimuovi.IsEnabled = false;
+            }
+
+            Selezionata = Temp[Stack_Proprieta.Children.IndexOf((UIElement)sender)];
+            if (Selezionata.Strutture.Count < 1)
+                Button_Rimuovi.IsEnabled = false;
+            else if (!Selezionata.Strutture[0].Tipo)
+                Button_Aggiungi.IsEnabled = false;
+        }
+
+        void AggiornaInterfaccia()
+        {
+            for(int i = 0; i < Temp.Count; i++)
+            {
+                CheckBox C = (CheckBox)Stack_Proprieta.Children[i];
+                Proprieta P = Temp[i];
+                C.Content = P.Nome + " (" + P.Strutture.Count + ")";
+            }
+            Button_Aggiungi.IsEnabled = true;
+            Button_Rimuovi.IsEnabled = true;
+
+            if (Selezionata.Strutture.Count < 1)
+                Button_Rimuovi.IsEnabled = false;
+            else if (!Selezionata.Strutture[0].Tipo)
+                Button_Aggiungi.IsEnabled = false;
+
+            Principale.AggiornaDaStrutture();
         }
 
         private void ConfermaStrutture(object sender, RoutedEventArgs e)
         {
-            for(int i = 0; i < Attive.Count; i++)
+            MessageBoxResult Risposta = MessageBox.Show("Sei sicuro di voler costruire su questa proprietà per L." + Selezionata.Costo / 8 + "?", "Conferma", MessageBoxButton.OKCancel);
+
+            if (Risposta.HasFlag(MessageBoxResult.OK))
             {
-                Attive[i].Strutture = Temporanee[i].Strutture;
+                Corrente.Soldi -= Selezionata.Costo / 8;
+                Selezionata.AddStruttura();
+
+                AggiornaInterfaccia();
+            }
+        }
+
+        private void RimuoviProprieta(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult Risposta = MessageBox.Show("Sei sicuro di voler rimuovere una struttura su questa proprietà per L." + Selezionata.Costo / 16 + "?", "Conferma", MessageBoxButton.OKCancel);
+
+            if (Risposta.HasFlag(MessageBoxResult.OK))
+            {
+                Corrente.Soldi += Selezionata.Costo / 16;
+                Selezionata.RemoveStruttura();
+
+                AggiornaInterfaccia();
             }
         }
     }

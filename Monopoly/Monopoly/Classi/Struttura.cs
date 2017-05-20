@@ -17,7 +17,7 @@ namespace Monopoly.Classi
 {
     public class Struttura : Image
     {
-        public bool Tipo;
+        public bool Tipo; //! \var Tipo \brief Bool che indica se la struttura è una casa (true) o un albergo (false)
         public Struttura(bool T)
         {
             Tipo = T;

@@ -69,13 +69,17 @@ namespace Monopoly
 
             if (Risposta.HasFlag(MessageBoxResult.OK))
             {
+                List<Proprieta> Selezionate = new List<Proprieta>();
                 foreach (object O in Stack_Proprieta.Children)
                 {
                     CheckBox C = (CheckBox)O;
                     Proprieta P = (Proprieta)Corrente.Proprieta[Stack_Proprieta.Children.IndexOf(C)];
                     if ((bool)C.IsChecked)
-                        Corrente.Vendi(P);
+                        Selezionate.Add(P);
                 }
+                foreach (Proprieta P in Selezionate)
+                    Corrente.Vendi(P);
+
                 this.Close();
             }
         }

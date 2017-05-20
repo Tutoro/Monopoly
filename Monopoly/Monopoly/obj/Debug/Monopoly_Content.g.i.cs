@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("immagini/tabellone_monopoli.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("immagini/monopoly_logo.png")]
 
 

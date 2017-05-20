@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Monopoly"
         mc:Ignorable="d"
-        Title="WindowStrutture" Height="91.428" Width="233.333" ResizeMode="NoResize">
+        Title="WindowStrutture" Height="98.761" Width="276.666" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="Button_Aggiungi" Content="+" HorizontalAlignment="Left" Margin="197,10,0,0" VerticalAlignment="Top" Width="22" Click="ConfermaStrutture"/>
+        <Button x:Name="Button_Aggiungi" Content="Aggiungi" HorizontalAlignment="Left" Margin="197,10,0,0" VerticalAlignment="Top" Width="58" Click="ConfermaStrutture"/>
         <StackPanel x:Name="Stack_Proprieta" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" VerticalAlignment="Top" Width="182"/>
-        <Button x:Name="Button_Rimuovi" Content="-" HorizontalAlignment="Left" Margin="197,35,0,0" VerticalAlignment="Top" Width="22" Click="RimuoviProprieta"/>
+        <Button x:Name="Button_Rimuovi" Content="Rimuovi" HorizontalAlignment="Left" Margin="197,35,0,0" VerticalAlignment="Top" Width="58" Click="RimuoviProprieta"/>
 
     </Grid>
 </Window>

@@ -29,6 +29,7 @@ namespace Monopoly
             InitializeComponent();
             Corrente = G;
             Principale = Pr;
+            Button_Conferma.IsEnabled = false;
             foreach (Proprieta P in Corrente.Proprieta)
             {
                 CheckBox C = new CheckBox();
@@ -54,6 +55,10 @@ namespace Monopoly
                 GuadagnoTotale += P.Costo / 2;
             else
                 GuadagnoTotale += P.Costo / 2;
+
+            Button_Conferma.IsEnabled = false;
+            if (GuadagnoTotale > 0)
+                Button_Conferma.IsEnabled = true;
 
             TextBox_Guadagno.Text = GuadagnoTotale.ToString();
         }

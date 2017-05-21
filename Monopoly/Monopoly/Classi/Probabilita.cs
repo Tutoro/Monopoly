@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*!
+\author    Verazza Claudio
+\version   0.2
+\date      15/05/2017
+*/
+
 namespace Monopoly.Classi
 {
     public enum Tipo_Carta
@@ -23,6 +29,7 @@ namespace Monopoly.Classi
         {
             Tipo = T;
             Pagamento = P;
+            Spostamento = P;
             Messaggio = M;
         }
         public Carta(Tipo_Carta T, string M)

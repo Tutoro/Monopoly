@@ -13,6 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/*!
+\author    Zacconi Andrea
+\version   1
+\date      02/05/2017
+*/
+
 namespace Monopoly.Classi
 {
     public class Struttura : Image

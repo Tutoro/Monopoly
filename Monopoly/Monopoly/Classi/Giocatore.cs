@@ -133,5 +133,15 @@ namespace Monopoly.Classi
             if (Posizione >= 30 && Posizione < 40)
                 Pedina.Margin = new Thickness(685 + (I + 1) * 22, 90 + (Posizione - 30) * 62.5, 0, 0);
         }
+
+        //! \fn GetValore \brief Calcola il valore totale dei possedimenti del giocatore
+        public int GetValore()
+        {
+            int Valore = Soldi;
+            foreach (Proprieta P in Proprieta)
+                Valore += P.Costo + (P.Strutture.Count * (P.Costo / 8));
+
+            return Valore;
+        }
     }
 }

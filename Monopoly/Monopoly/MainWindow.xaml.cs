@@ -16,8 +16,10 @@ using Monopoly.Classi;
 
 /*!
 \author    Arduini Alberto
-\version   0.1
-\date      05/05/2017
+\author    Verazza Claudio
+\author    Zacconi Andrea
+\version   1
+\date      02/05/2017
 */
 
 namespace Monopoly
@@ -27,11 +29,12 @@ namespace Monopoly
     public partial class MainWindow : Window
     {
         public int Turno; //! \var Turno \brief Variabile intera che contiene di quale giocatore è il turno
+        int Turni; //! \var Turni \brief Intero che conta il numero di turni massimi (0 = infiniti, > 0 finiti)
         bool Passato; //! \var Passato \brief Variabile booleana che controlla se un giocatore ha tirato i dadi
 
         Giocatore[] Giocatori; //! \var Giocatori \brief Vettore che contiene i giocatori
         public Casella[] Caselle; //! \var Caselle \brief Vettore che contiene tutte le caselle del tabellone
-        Random R; //! \var R \brief Variabile Random
+        Random R; //! \var R \brief Variabile per estrarre numeri Random
         TextBlock[] TextBlockSoldi;
         Carta[] Probabilita, Imprevisti;
 
@@ -60,6 +63,7 @@ namespace Monopoly
             CreaCarte();
             Passato = true;
             Turno = 0;
+            this.Turni = Turni;
             AggiornaInterfaccia();
         }
 
@@ -389,7 +393,36 @@ namespace Monopoly
                     while (!Giocatori[Turno].InGioco);
 
                     Passato = true;
-                    MessageBox.Show("E' il turno del Giocatore " + (Turno + 1));
+                    int Giocanti = 0;
+                    foreach(Giocatore G in Giocatori)
+                    {
+                        if (G.InGioco)
+                            Giocanti++;
+                    }
+
+                    if(Turni == 1 || Giocanti == 1)
+                    {
+                        int G = 0;
+                        for(int i = 1; i < Giocatori.Length; i++)
+                        {
+                            if (Giocatori[G].GetValore() < Giocatori[i].GetValore())
+                                G = i;
+                        }
+                        MessageBox.Show("Partita terminata. Il vincitore è il Giocatore " + G + " con un valore totale di " + Giocatori[G].GetValore() + "L");
+                        MessageBoxResult Risposta = MessageBox.Show("Vuoi Rigiocare?", "Avviso", MessageBoxButton.YesNo);
+
+                        if (Risposta == MessageBoxResult.Yes)
+                            new WindowInizioPartita().Show();
+
+                        this.Close();
+                    }
+                    else if (Turni > 0)
+                    {
+                        Turni--;
+                        MessageBox.Show("E' il turno del Giocatore " + (Turno + 1) + ", Turni rimanenti: " + Turni);
+                    }
+                    else
+                        MessageBox.Show("E' il turno del Giocatore " + (Turno + 1));
                 }
             }
             

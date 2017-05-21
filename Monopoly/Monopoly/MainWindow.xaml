@@ -28,7 +28,10 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
             </Button.Background>
         </Button>
-        <Menu x:Name="Menu_Azioni" HorizontalAlignment="Left" Height="66" Margin="0,734,0,0" VerticalAlignment="Top" Width="146" Visibility="Collapsed">
+        <Menu x:Name="Menu_Azioni" HorizontalAlignment="Left" Height="66" Margin="0,734,0,0" VerticalAlignment="Top" Width="146" Visibility="Collapsed" BorderBrush="Black" BorderThickness="2">
+            <Menu.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+            </Menu.Background>
             <Button x:Name="Button_CompraStrutture" Content="Compra/Vendi Strutture" Click="CompraStrutture" Width="130"/>
             <Button x:Name="Button_CompraProprieta" Content="Compra Proprietà" Click="CompraProprieta" Width="130"/>
             <Button x:Name="Button_VendiProprieta" Content="Ipoteca Proprietà" Width="130" Click="IpotecaProprieta"/>

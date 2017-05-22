@@ -47,17 +47,20 @@ namespace Monopoly.Classi
         }
 
         //esegue l'azione
-        public void Azione(int Turno, Giocatore[] Giocatori, ref Carta[] Mazzo)
+        public bool Azione(int Turno, Giocatore[] Giocatori, ref Carta[] Mazzo)
         {
+            bool Ritorno = false;
             switch (Tipo)
             {
                 case Tipo_Carta.SpostaCasella:
                     Giocatori[Turno].SetPosizione(Spostamento, Turno, true);
+                    Ritorno = true;
                     Scorri(ref Mazzo);
                     break;
 
                 case Tipo_Carta.SpostaNumero:
                     Giocatori[Turno].SetPosizione(-Mazzo[0].Spostamento, Turno, false);
+                    Ritorno = true;
                     Scorri(ref Mazzo);
                     break;
 
@@ -94,6 +97,7 @@ namespace Monopoly.Classi
                     Scorri(ref Mazzo);
                     break;
             }
+            return Ritorno;
         }
 
         //scorre il mazzo di carte

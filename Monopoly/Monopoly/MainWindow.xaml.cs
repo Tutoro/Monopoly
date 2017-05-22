@@ -272,16 +272,18 @@ namespace Monopoly
                     case Tipo_Speciali.Probabilita:
                         {
                             MessageBox.Show(Probabilita[0].Messaggio);
-                            Probabilita[0].Azione(Turno, Giocatori, ref Probabilita);
+                            if(Probabilita[0].Azione(Turno, Giocatori, ref Probabilita))
                             ControllaCella();
                         }
                         break;
 
                     case Tipo_Speciali.Imprevisti:
+                    {
                         MessageBox.Show(Imprevisti[0].Messaggio);
-                        Imprevisti[0].Azione(Turno, Giocatori, ref Imprevisti);
+                        if(revisti[0].Azione(Turno, Giocatori, ref Imprevisti))
                         ControllaCella();
                         break;
+                    }
                 }
             }
 

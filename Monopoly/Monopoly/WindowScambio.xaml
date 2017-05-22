@@ -1,0 +1,35 @@
+﻿<Window x:Name="wScambio" x:Class="Monopoly.WindowScambio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Monopoly"
+        mc:Ignorable="d"
+        Title="Finestra di Trade" Height="348.738" Width="533.204">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="nomeGiocatore" Content="nomeGiocatore" HorizontalAlignment="Left" Margin="50,8,0,0" VerticalAlignment="Top" Height="35" Width="154" FontSize="18"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="270" Margin="262,8,0,0" Stroke="Black" VerticalAlignment="Top" Width="2" Opacity="0.45"/>
+        <Label x:Name="txt1" Content="Proprietà scambiabili:" HorizontalAlignment="Left" Margin="7,52,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <ListBox x:Name="listaProprietaUno" HorizontalAlignment="Left" Height="61" Margin="7,144,0,0" VerticalAlignment="Top" Width="241" MouseDoubleClick="rimuoviElementoUno"/>
+        <Label x:Name="txt3" Content="Proprietà scelte:" HorizontalAlignment="Left" Margin="7,121,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Button x:Name="addUno" Content="+" HorizontalAlignment="Left" Margin="219,80,0,0" VerticalAlignment="Top" Width="29" Height="29" FontSize="18" Click="aggiungiUno"/>
+        <TextBox x:Name="vaultUno" HorizontalAlignment="Left" Height="23" Margin="7,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" Text="0"/>
+        <Label x:Name="txt5" Content="Valuta da scambiare:" HorizontalAlignment="Left" Margin="7,217,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Button x:Name="sendUno" Content="Invia contratto" HorizontalAlignment="Left" Margin="146,240,0,0" VerticalAlignment="Top" Width="102" Height="23" Click="confermaUno"/>
+        <Label x:Name="txt2" Content="Proprietà scambiabili:" HorizontalAlignment="Left" Margin="276,52,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <ListBox x:Name="listaProprietaDue" HorizontalAlignment="Left" Height="61" Margin="276,144,0,0" VerticalAlignment="Top" Width="241" MouseDoubleClick="rimuoviElementoDue"/>
+        <Label x:Name="txt4" Content="Proprietà scelte:" HorizontalAlignment="Left" Margin="276,121,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Button x:Name="addDue" Content="+" HorizontalAlignment="Left" Margin="488,80,0,0" VerticalAlignment="Top" Width="29" Height="29" FontSize="18" Click="aggiungiDue"/>
+        <TextBox x:Name="vaultDue" HorizontalAlignment="Left" Height="23" Margin="276,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" Text="0"/>
+        <Label x:Name="txt6" Content="Valuta da scambiare:" HorizontalAlignment="Left" Margin="276,217,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Button x:Name="sendDue" Content="Invia contratto" HorizontalAlignment="Left" Margin="415,240,0,0" VerticalAlignment="Top" Width="102" Height="23" Click="confermaDue"/>
+        <Button x:Name="stopAll" Content="Annulla contratto" HorizontalAlignment="Left" Margin="214,283,0,0" VerticalAlignment="Top" Width="98" Height="25" Click="annullaScambio"/>
+        <ComboBox x:Name="listaGiocatori" HorizontalAlignment="Left" Margin="341,16,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="sceltaGiocatore"/>
+        <ComboBox x:Name="proprietaDue" HorizontalAlignment="Left" Margin="276,80,0,0" VerticalAlignment="Top" Width="207" Height="29"/>
+        <ComboBox x:Name="proprietaUno" HorizontalAlignment="Left" Margin="7,80,0,0" VerticalAlignment="Top" Width="207" Height="29"/>
+
+    </Grid>
+</Window>

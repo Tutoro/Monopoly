@@ -18,7 +18,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="266,805,0,0" VerticalAlignment="Top" Width="270" Height="44" BorderBrush="Black">
+        <Button x:Name="Button_Scambia" Content="Scambia" HorizontalAlignment="Left" Margin="266,805,0,0" VerticalAlignment="Top" Width="270" Height="44" BorderBrush="Black" Click="Scambio">
             <Button.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
             </Button.Background>

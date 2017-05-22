@@ -494,6 +494,16 @@ namespace Monopoly
             AggiornaInterfaccia();
         }
 
+        private void Scambio(object sender, RoutedEventArgs e)
+        {
+            List<Giocatore> A = new List<Giocatore>();
+            foreach (Giocatore I in Giocatori)
+                if (I != Giocatori[Turno])
+                    A.Add(I);
+
+            new WindowScambio(A.ToArray(), Giocatori[Turno]).Show();
+        }
+
         private void Trucchi(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.B)

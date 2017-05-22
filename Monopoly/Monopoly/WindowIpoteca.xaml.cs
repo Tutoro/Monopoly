@@ -57,7 +57,7 @@ namespace Monopoly
             if ((bool)C.IsChecked)
                 GuadagnoTotale += P.Costo / 2;
             else
-                GuadagnoTotale += P.Costo / 2;
+                GuadagnoTotale -= P.Costo / 2;
 
             Button_Conferma.IsEnabled = false;
             if (GuadagnoTotale > 0)

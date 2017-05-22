@@ -16,9 +16,10 @@ using Monopoly.Classi;
 
 /*!
 \author    Arduini Alberto
+\author    Poli Alessandro
 \author    Verazza Claudio
 \author    Zacconi Andrea
-\version   1
+\version   1.5a
 \date      02/05/2017
 */
 
@@ -110,11 +111,11 @@ namespace Monopoly
                         R = new TextBlock();
                         R.HorizontalAlignment = HorizontalAlignment.Center;
                         R.TextAlignment = TextAlignment.Center;
-                        R.Width = 200;
+                        R.Width = 268;
                         R.Height = 22;
                         R.Margin = new Thickness(0, Altezza_Prossima, 0, 0);
                         Altezza_Prossima += 2;
-                        R.Background = Brushes.Black;
+                        R.Background = Brushes.DarkGray;
                         R.Foreground = Brushes.White;
                         R.Text = "Uscita gratis di Prigione!";
                         StackPanel_ProprietaUtente.Children.Add(R);
@@ -123,6 +124,7 @@ namespace Monopoly
             }
             if (Passato)
             {
+                Button_CompraStrutture.IsEnabled = false;
                 Button_Scambia.IsEnabled = true;
                 Button_CompraProprieta.IsEnabled = false;
                 Button_VendiProprieta.IsEnabled = true;
@@ -133,6 +135,10 @@ namespace Monopoly
             }
             else
             {
+                Button_CompraStrutture.IsEnabled = true;
+                if (CasellaCorrente is Proprieta && ProprietaCorrente.Proprietario != Giocatori[Turno])
+                    Button_CompraStrutture.IsEnabled = false;
+
                 Button_Scambia.IsEnabled = false;
                 Button_CompraProprieta.IsEnabled = false;
                 if (CasellaCorrente is Proprieta && Giocatori[Turno].Soldi >= ProprietaCorrente.Costo && ProprietaCorrente.Proprietario == null)
@@ -236,12 +242,59 @@ namespace Monopoly
             Carta.Mischia(ref Imprevisti);
         }
 
+        void ControllaCella()
+        {
+            if (CasellaCorrente is Speciali)
+            {
+                switch (SpecialeCorrente.Tipo)
+                {
+                    case Tipo_Speciali.Tassa:
+                        Giocatori[Turno].Soldi -= SpecialeCorrente.Tassa_Costo;
+                        break;
+
+                    case Tipo_Speciali.Prigione:
+                        if (Giocatori[Turno].BigliettoPrigione > 0)
+                        {
+                            MessageBox.Show("Usi il biglietto per saltare la prigione");
+                            Giocatori[Turno].BigliettoPrigione--;
+                            Giocatori[Turno].SetPosizione(10, Turno, true);
+                            ControllaCella();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vai in Prigione!");
+                            Giocatori[Turno].InPrigione = 3;
+                            Giocatori[Turno].SetPosizione(10, Turno, true);
+                            ControllaCella();
+                        }
+                        break;
+
+                    case Tipo_Speciali.Probabilita:
+                        {
+                            MessageBox.Show(Probabilita[0].Messaggio);
+                            Probabilita[0].Azione(Turno, Giocatori, ref Probabilita);
+                            ControllaCella();
+                        }
+                        break;
+
+                    case Tipo_Speciali.Imprevisti:
+                        MessageBox.Show(Imprevisti[0].Messaggio);
+                        Imprevisti[0].Azione(Turno, Giocatori, ref Imprevisti);
+                        ControllaCella();
+                        break;
+                }
+            }
+
+            if (CasellaCorrente is Proprieta)
+                ProprietaCorrente.Rendita(Giocatori[Turno]);
+        }
+
         private void PassaTurno(object sender, RoutedEventArgs e)
         {
             if (Passato)
             {
                 int Risultato = R.Next(1, 7) + R.Next(1, 7);
-                MessageBox.Show(Risultato.ToString());
+                MessageBox.Show("Hai estratto " + Risultato.ToString());
 
                 if (Giocatori[Turno].InPrigione > 0 && Risultato < 12)
                 {
@@ -253,113 +306,7 @@ namespace Monopoly
                 else
                 {
                     Giocatori[Turno].SetPosizione(Risultato, Turno, false);
-
-                    if (CasellaCorrente is Speciali)
-                    {
-                        switch (SpecialeCorrente.Tipo)
-                        {
-                            case Tipo_Speciali.Tassa:
-                                Giocatori[Turno].Soldi -= SpecialeCorrente.Tassa_Costo;
-                                break;
-
-                            case Tipo_Speciali.Prigione:
-                                if (Giocatori[Turno].BigliettoPrigione > 0)
-                                {
-                                    MessageBox.Show("Usi il biglietto per saltare la prigione");
-                                    Giocatori[Turno].BigliettoPrigione--;
-                                    Giocatori[Turno].SetPosizione(10, Turno, true);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Vai in Prigione!");
-                                    Giocatori[Turno].InPrigione = 3;
-                                    Giocatori[Turno].SetPosizione(10, Turno, true);
-                                }
-                                break;
-
-                            case Tipo_Speciali.Probabilita:
-                                MessageBox.Show(Probabilita[0].Messaggio);
-                                switch(Probabilita[0].Tipo)
-                                {
-                                    case Tipo_Carta.SpostaCasella:
-                                        Giocatori[Turno].SetPosizione(Probabilita[0].Spostamento, Turno, true);
-                                        Carta.Scorri(ref Probabilita);
-                                        break;
-
-                                    case Tipo_Carta.Tassa:
-                                        Giocatori[Turno].Soldi += Probabilita[0].Pagamento;
-                                        Carta.Scorri(ref Probabilita);
-                                        break;
-
-                                    case Tipo_Carta.TassaGlobale:
-                                        foreach(Giocatore G in Giocatori)
-                                            if (G != Giocatori[Turno])
-                                                G.Soldi -= Probabilita[0].Pagamento;
-                                            else
-                                                G.Soldi += Probabilita[0].Pagamento * (Giocatori.Length - 1);
-                                        Carta.Scorri(ref Probabilita);
-                                        break;
-
-                                    case Tipo_Carta.UscitaPrigione:
-                                        Giocatori[Turno].BigliettoPrigione++;
-                                        Carta.RimuoviPrigione(ref Probabilita);
-                                        Carta.Scorri(ref Probabilita);
-                                        break;
-                                }
-                                break;
-                            case Tipo_Speciali.Imprevisti:
-                                MessageBox.Show(Imprevisti[0].Messaggio);
-                                switch (Imprevisti[0].Tipo)
-                                {
-                                    case Tipo_Carta.SpostaCasella:
-                                        Giocatori[Turno].SetPosizione(Imprevisti[0].Spostamento, Turno, true);
-                                        Carta.Scorri(ref Imprevisti);
-                                        break;
-
-                                    case Tipo_Carta.SpostaNumero:
-                                        Giocatori[Turno].SetPosizione(-Imprevisti[0].Spostamento, Turno, false);
-                                        Carta.Scorri(ref Imprevisti);
-                                        break;
-
-                                    case Tipo_Carta.Tassa:
-                                        Giocatori[Turno].Soldi += Imprevisti[0].Pagamento;
-                                        Carta.Scorri(ref Imprevisti);
-                                        break;
-
-                                    case Tipo_Carta.TassaGlobale:
-                                        foreach (Giocatore G in Giocatori)
-                                            if (G != Giocatori[Turno])
-                                                G.Soldi -= Imprevisti[0].Pagamento;
-                                            else
-                                                G.Soldi += Imprevisti[0].Pagamento * (Giocatori.Length - 1);
-                                        Carta.Scorri(ref Imprevisti);
-                                        break;
-
-                                    case Tipo_Carta.UscitaPrigione:
-                                        Giocatori[Turno].BigliettoPrigione++;
-                                        Carta.RimuoviPrigione(ref Imprevisti);
-                                        Carta.Scorri(ref Imprevisti);
-                                        break;
-                                    case Tipo_Carta.TassaCaseAlberghi:
-                                        int Costo = 0;
-                                        foreach (Proprieta P in Giocatori[Turno].Proprieta)
-                                        {
-                                            foreach (Struttura S in P.Strutture)
-                                                if (S.Tipo)
-                                                    Costo += Imprevisti[0].PagaC;
-                                                else
-                                                    Costo += Imprevisti[0].PagaA;
-                                        }
-                                        Giocatori[Turno].Soldi -= Costo;
-                                        Carta.Scorri(ref Imprevisti);
-                                        break;
-                                }
-                                break;
-                        }
-                    }
-
-                    if (CasellaCorrente is Proprieta)
-                        ProprietaCorrente.Rendita(Giocatori[Turno]);
+                    ControllaCella();
                 }
 
                 Passato = false;
@@ -463,16 +410,8 @@ namespace Monopoly
             WindowIpoteca I = new WindowIpoteca(Giocatori[Turno], this);
             I.Show();
             this.IsEnabled = false;
-            //this.Hide();
-            I.Closed += ChiusuraIpoteca;
-            
+            I.Closed += ChiusuraFinestra;
             Menu_Azioni.Visibility = Visibility.Collapsed;
-            AggiornaInterfaccia();
-        }
-
-        private void ChiusuraIpoteca(object sender, EventArgs e)
-        {
-            this.IsEnabled = true;
             AggiornaInterfaccia();
         }
 
@@ -481,13 +420,7 @@ namespace Monopoly
             WindowStrutture W = new WindowStrutture(Giocatori[Turno], this);
             W.Visibility = Visibility.Visible;
             this.IsEnabled = false;
-            W.Closed += ChiusuraStrutture;
-        }
-
-        private void ChiusuraStrutture(object sender, EventArgs e)
-        {
-            this.IsEnabled = true;
-            AggiornaInterfaccia();
+            W.Closed += ChiusuraFinestra;
         }
         public void AggiornaDaStrutture()
         {
@@ -496,12 +429,16 @@ namespace Monopoly
 
         private void Scambio(object sender, RoutedEventArgs e)
         {
-            List<Giocatore> A = new List<Giocatore>();
-            foreach (Giocatore I in Giocatori)
-                if (I != Giocatori[Turno])
-                    A.Add(I);
+            WindowScambio W = new WindowScambio(Giocatori, Giocatori[Turno]);
+            W.Closed += ChiusuraFinestra;
+            this.IsEnabled = false;
+            W.Show();
+        }
 
-            new WindowScambio(A.ToArray(), Giocatori[Turno]).Show();
+        private void ChiusuraFinestra(object sender, EventArgs e)
+        {
+            this.IsEnabled = true;
+            AggiornaInterfaccia();
         }
 
         private void Trucchi(object sender, KeyEventArgs e)

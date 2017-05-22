@@ -13,11 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Monopoly.Classi;
 
+/*!
+\author    Arduini Alberto
+\version   0.8
+\date      15/05/2017
+*/
+
 namespace Monopoly
 {
-    /// <summary>
-    /// Logica di interazione per WindowIpoteca.xaml
-    /// </summary>
     public partial class WindowIpoteca : Window
     {
         Giocatore Corrente;

@@ -31,8 +31,8 @@ namespace Monopoly.Classi
 
         //! \fn Casella
         //! \brief Crea una casella
-        //! \param Col \brief Colore della casella
-        //! \param N \brief Nome della casella
+        //! \param Col Colore della casella
+        //! \param N Nome della casella
         public Casella(Brush Col, string N)
         {
             Colore = Col;

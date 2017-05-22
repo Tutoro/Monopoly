@@ -33,14 +33,16 @@ namespace Monopoly.Classi
         public bool InGioco; //! \var InGioco \brief Bool che controlla se il giocatore è in bancarotta o no
         public int BigliettoPrigione; //! \var BigliettoPrigione \brief Intero che controlla quanti biglietti ha il giocatore per uscire di prigione
 
-        //! \fn Costruttore \brief Crea un giocatore con colore e soldi iniziali prestabiliti
-        //! \param C \brief Colore del giocatore
-        //! \param S \brief Soldi iniziali del giocatore
+        //! \fn Giocatore
+        //! \brief Crea un giocatore con colore e soldi iniziali prestabiliti
+        //! \param C Colore del giocatore
+        //! \param S Soldi iniziali del giocatore
         public Giocatore(Brush C, int S)
         {
             Pedina = new Ellipse();
             Pedina.Fill = C;
             Pedina.Stroke = Brushes.Black;
+            Pedina.StrokeThickness = 2;
             Pedina.HorizontalAlignment = HorizontalAlignment.Left;
             Pedina.VerticalAlignment = VerticalAlignment.Top;
             Pedina.Width = 20;
@@ -51,9 +53,9 @@ namespace Monopoly.Classi
             InGioco = true;
         }
 
-        //! \fn Compra \brief Compra una proprietà prestabilita
-        //! \param C \brief Casella da comprare
-        //! \return bool \brief Ritorna falso se il giocatore non ha abbastanza soldi per acquistare o se non è una proprieta valida, altrimenti vero
+        //! \fn Compra
+        //! \brief Compra una proprietà prestabilita
+        //! \param C Casella da comprare
 
         public bool Compra(Proprieta C)
         { 
@@ -63,9 +65,9 @@ namespace Monopoly.Classi
             return true;
         }
 
-        //! \fn Vendi \brief Ipoteca una proprietà prestabilita
-        //! \param C \brief Casella da ipotecare
-        //! \return bool \brief Ritorna falso se il giocatore non possiede la proprietà, altrimenti vero
+        //! \fn Vendi
+        //! \brief Ipoteca una proprietà prestabilita
+        //! \param C Casella da ipotecare
         public bool Vendi(Casella C)
         {
             if (C is Speciali || !Proprieta.Contains(C))
@@ -80,10 +82,10 @@ namespace Monopoly.Classi
             return true;
         }
 
-        //! \fn Vendi \brief Vende una struttura su una proprietà prestabilita
-        //! \param S \brief Struttura da vendere
-        //! \param C \brief Casella sulla cui agire
-        //! \return bool \brief Ritorna falso se il giocatore non possiede la proprietà, non ha il tipo di struttura da vendere o è una proprieta non edificabile, altrimenti vero
+        //! \fn Vendi
+        //! \brief Vende una struttura su una proprietà prestabilita
+        //! \param S Struttura da vendere
+        //! \param C Casella sulla cui agire
         public bool Vendi(Struttura S, Casella C)
         {
             if (!Proprieta.Contains(C))
@@ -104,10 +106,11 @@ namespace Monopoly.Classi
             return false;
         }
 
-        //! \fn SetPosizione \brief Muove il giocatore sul campo del numero di posizioni specificate
-        //! \param P \brief Posizione da impostare
-        //! \param I \brief Indice del giocatore sul vettore principale
-        //! \param Relative \brief Decide se il movimento va aggiunto alla posizione totale oppure se va direttamente impostato
+        //! \fn SetPosizione
+        //! \brief Muove il giocatore sul campo del numero di posizioni specificate
+        //! \param P Posizione da impostare
+        //! \param I Indice del giocatore sul vettore principale
+        //! \param Relative Decide se il movimento va aggiunto alla posizione totale oppure se va direttamente impostato
         public void SetPosizione(int P, int I, bool Relative)
         {
             if (!Relative)
@@ -134,7 +137,8 @@ namespace Monopoly.Classi
                 Pedina.Margin = new Thickness(685 + (I + 1) * 22, 90 + (Posizione - 30) * 62.5, 0, 0);
         }
 
-        //! \fn GetValore \brief Calcola il valore totale dei possedimenti del giocatore
+        //! \fn GetValore
+        //! \brief Calcola il valore totale dei possedimenti del giocatore
         public int GetValore()
         {
             int Valore = Soldi;

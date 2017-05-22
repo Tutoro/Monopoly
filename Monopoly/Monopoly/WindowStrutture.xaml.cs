@@ -13,11 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Monopoly.Classi;
 
+/*!
+\author    Arduini Alberto
+\version   0.2
+\date      19/05/2017
+*/
+
 namespace Monopoly
 {
-    /// <summary>
-    /// Logica di interazione per WindowStrutture.xaml
-    /// </summary>
     public partial class WindowStrutture : Window
     {
         Giocatore Corrente;

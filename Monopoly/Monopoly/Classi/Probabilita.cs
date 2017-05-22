@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 /*!
 \author    Verazza Claudio
-\version   0.2
+\version   0.3b
 \date      15/05/2017
 */
 
@@ -15,15 +15,16 @@ namespace Monopoly.Classi
     public enum Tipo_Carta
     { SpostaCasella, SpostaNumero, Tassa, TassaGlobale, UscitaPrigione, TassaCaseAlberghi };
 
+    //! \class Carta
+    //! \brief Classe che rappresenta le carte delle probabilità e degli imprevisti nel gioco
     class Carta
     {
-        public Tipo_Carta Tipo;
-        public int Pagamento;
-        public int Spostamento;
-        //public bool Via;
-        public int PagaC; // Costo case
-        public int PagaA; // Costo alberghi
-        public string Messaggio;
+        public Tipo_Carta Tipo; //! \var Tipo \brief Tipo di azione della carta
+        private int Pagamento; //Pagamento che deve effettuare il giocatore (nel caso la carta sia una tassa) oppure la somme che ogni giocatore deve versare (tassaGlobale)
+        private int Spostamento; //Lo spostamento che deve essere effettuato dal giocatore (tipo SpostaCasella o SpostaNumero)
+        private int PagaC; // Costo case
+        private int PagaA; // Costo alberghi
+        public string Messaggio; //! \var Messaggio \brief Il messaggio scritto sulla carta da mostrare all'utente
 
         public Carta(Tipo_Carta T, int P, string M)
         {
@@ -45,6 +46,57 @@ namespace Monopoly.Classi
             Messaggio = M;
         }
 
+        //esegue l'azione
+        public void Azione(int Turno, Giocatore[] Giocatori, ref Carta[] Mazzo)
+        {
+            switch (Tipo)
+            {
+                case Tipo_Carta.SpostaCasella:
+                    Giocatori[Turno].SetPosizione(Spostamento, Turno, true);
+                    Scorri(ref Mazzo);
+                    break;
+
+                case Tipo_Carta.SpostaNumero:
+                    Giocatori[Turno].SetPosizione(-Mazzo[0].Spostamento, Turno, false);
+                    Scorri(ref Mazzo);
+                    break;
+
+                case Tipo_Carta.Tassa:
+                    Giocatori[Turno].Soldi += Mazzo[0].Pagamento;
+                    Scorri(ref Mazzo);
+                    break;
+
+                case Tipo_Carta.TassaGlobale:
+                    foreach (Giocatore G in Giocatori)
+                        if (G != Giocatori[Turno])
+                            G.Soldi -= Mazzo[0].Pagamento;
+                        else
+                            G.Soldi += Mazzo[0].Pagamento * (Giocatori.Length - 1);
+                    Scorri(ref Mazzo);
+                    break;
+
+                case Tipo_Carta.UscitaPrigione:
+                    Giocatori[Turno].BigliettoPrigione++;
+                    RimuoviPrigione(ref Mazzo);
+                    Scorri(ref Mazzo);
+                    break;
+                case Tipo_Carta.TassaCaseAlberghi:
+                    int Costo = 0;
+                    foreach (Proprieta P in Giocatori[Turno].Proprieta)
+                    {
+                        foreach (Struttura S in P.Strutture)
+                            if (S.Tipo)
+                                Costo += Mazzo[0].PagaC;
+                            else
+                                Costo += Mazzo[0].PagaA;
+                    }
+                    Giocatori[Turno].Soldi -= Costo;
+                    Scorri(ref Mazzo);
+                    break;
+            }
+        }
+
+        //scorre il mazzo di carte
         public static void Scorri(ref Carta[] L)
         {
             Carta T = L[0];
@@ -54,6 +106,7 @@ namespace Monopoly.Classi
             L[L.Length - 1] = T;
         }
 
+        //rimuove la carta della prigione dal mazzo
         public static void RimuoviPrigione(ref Carta[] L)
         {
             Carta[] T = new Carta[L.Length - 1];
@@ -63,6 +116,7 @@ namespace Monopoly.Classi
             L = T;
         }
 
+        //aggiunge la carta della prigione nel mazzo
         public static void AggiungiPrigione(ref Carta[] L)
         {
             Carta[] T = new Carta[L.Length + 1];
@@ -73,11 +127,7 @@ namespace Monopoly.Classi
             L = T;
         }
 
-        public static Proprieta GetProprieta(Casella C)
-        {
-            return (Proprieta)C;
-        }
-
+        //mischia il mazzo di carte
         public static void Mischia(ref Carta[] M)
         {
             Random R = new Random();

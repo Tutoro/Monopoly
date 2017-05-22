@@ -13,11 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Monopoly.Classi;
 
+/*!
+\author    Zacconi Andrea
+\version   1.0
+\date      15/05/2017
+*/
+
 namespace Monopoly
 {
-    /// <summary>
-    /// Logica di interazione per WindowInizioPartita.xaml
-    /// </summary>
     public partial class WindowInizioPartita : Window
     {
         Giocatore[] Giocatori;

@@ -92,3 +92,5 @@ C:\Users\Alberto\Downloads\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowStr
 C:\Users\Alberto\Downloads\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowStrutture.baml
 C:\Users\PC01\Downloads\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowScambio.g.cs
 C:\Users\PC01\Downloads\Monopoly-master\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowStrutture.g.cs
+C:\Users\Alberto\Downloads\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowScambio.g.cs
+C:\Users\Alberto\Downloads\Monopoly-master\Monopoly\Monopoly\obj\Debug\WindowScambio.baml

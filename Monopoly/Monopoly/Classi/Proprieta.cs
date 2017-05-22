@@ -37,10 +37,10 @@ namespace Monopoly.Classi
 
         //! \fn Proprieta
         //! \brief Crea una proprietà con parametri definiti
-        //! \param Col \brief Colore della proprietà
-        //! \param N \brief Nome della proprietà
-        //! \param C \brief Costo della proprietà
-        //! \param S \brief Se la proprietà è speciale
+        //! \param Col Colore della proprietà
+        //! \param N Nome della proprietà
+        //! \param C Costo della proprietà
+        //! \param S Se la proprietà è speciale
         public Proprieta(Brush Col, string N, int C, bool S) : base(Col, N)
         {
             Costo = C;
@@ -52,7 +52,7 @@ namespace Monopoly.Classi
 
         //! \fn Rendita
         //! \brief Gestisce la rendita
-        //! \param Pagante \brief Il giocatore che deve pagare (il prorpietario è già salvato nelle proprietà)
+        //! \param Pagante Il giocatore che deve pagare (il prorpietario è già salvato nelle proprietà)
         public void Rendita(Giocatore Pagante)
         {
             if (Proprietario != null && Proprietario != Pagante)
@@ -73,7 +73,7 @@ namespace Monopoly.Classi
 
         //! \fn GetInterfaccia
         //! \brief Crea un TextBlock che mostra la proprietà nel pannello a lato
-        //! \param Altezza \brief L'altezza a cui mostrare il TextBlock (verrà incrementata in automatico)
+        //! \param Altezza L'altezza a cui mostrare il TextBlock (verrà incrementata in automatico)
         public Canvas GetInterfaccia(ref int Altezza)
         {
             Canvas C = new Canvas();
@@ -159,9 +159,9 @@ namespace Monopoly.Classi
 
         //! \var Speciali
         //! \brief Crea una casella speciale con parametri definiti
-        //! \param N \brief Nome della casella
-        //! \param T \brief Tipo della casella
-        //! \param C \brief Costo della tassa
+        //! \param N Nome della casella
+        //! \param T Tipo della casella
+        //! \param C Costo della tassa
         public Speciali(string N, Tipo_Speciali T, int C) : base(Brushes.Black, N)
         {
             Tassa_Costo = C;

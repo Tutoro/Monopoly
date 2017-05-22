@@ -24,6 +24,10 @@ namespace Monopoly.Classi
     public class Struttura : Image
     {
         public bool Tipo; //! \var Tipo \brief Bool che indica se la struttura è una casa (true) o un albergo (false)
+
+        //! \fn Struttura
+        //! \brief Crea una struttura di tipo definito
+        //! \param T Tipo di strutttura (true = casa, false = albergo)
         public Struttura(bool T)
         {
             Tipo = T;

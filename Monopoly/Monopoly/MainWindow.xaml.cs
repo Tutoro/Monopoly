@@ -278,12 +278,12 @@ namespace Monopoly
                         break;
 
                     case Tipo_Speciali.Imprevisti:
-                    {
-                        MessageBox.Show(Imprevisti[0].Messaggio);
-                        if(revisti[0].Azione(Turno, Giocatori, ref Imprevisti))
-                        ControllaCella();
-                        break;
-                    }
+                        {
+                            MessageBox.Show(Imprevisti[0].Messaggio);
+                            if(Imprevisti[0].Azione(Turno, Giocatori, ref Imprevisti))
+                            ControllaCella();
+                        }
+                    break;
                 }
             }
 
